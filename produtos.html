@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alo! Mana?</title>
+    <title>Alô!Mana?</title>
     <link rel="shortcut icon" href="img/logo-favicon-alomana.png" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="variables.css">
@@ -23,6 +23,7 @@
                     </svg>
                 </div>
             </div>
+
 
             <a href="index.html"><img class="logo-alomana" src="img/logo-alomana.png" alt="Alô!Mana? Logo"></a>
 
@@ -52,47 +53,16 @@
         </ul>
     </nav>
 
-    <footer class="main-footer" style="margin-top: 0; padding-top: 20px; padding-bottom: 20px;">
-        <div class="footer-grid">
-            <div class="footer-logo">
-                <img src="img/IFB-logo.png" alt="Logo IFB">
-            </div>
-            <div class="footer-info">
-                <p class="copyright">© 2025 – Alo!Mana?<br>Projeto acadêmico</p>
-                <p class="instituicao">Instituto Federal de Brasília – IFB</p>
-            </div>
-            <div class="footer-spacer"></div>
-        </div>
-    </footer>
-
-    <main class="produtos-page-container" style="position: relative;">
+    <main class="produtos-page-container">
         <aside class="sidebar-filtros">
-            <div class="titulo-secao titulo-secao--compacto" style="margin-bottom: 30px;">
-                <span>Nossos</span>
-                <h2>Produtos</h2>
-                <div class="linha"></div>
+            <div class="title-container">
+                <h1 class="h1-title">Produtos</h1>
+                <h2 class="h2-subtitle">Nossos</h2>
             </div>
 
             <nav class="filtros-container">
                 <details class="filtro-grupo" open>
-                    <summary class="filtro-header" style="font-weight: bold; font-size: 1.2rem; display: flex; align-items: center; gap: 10px;">
-                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 0V14M0 7H14" stroke="#1A1A1A" stroke-width="2"/></svg>
-                        Categoria
-                    </summary>
-                    <ul class="filtro-lista">
-                        <li class="filtro-item-opcao"><label><input type="checkbox"> Acessórios</label></li>
-                        <li class="filtro-item-opcao"><label><input type="checkbox" checked> Face</label></li>
-                        <li class="filtro-item-opcao"><label><input type="checkbox"> Lábios</label></li>
-                        <li class="filtro-item-opcao"><label><input type="checkbox"> Olhos</label></li>
-                        <li class="filtro-item-opcao"><label><input type="checkbox"> Skincare</label></li>
-                    </ul>
-                </details>
-
-                <details class="filtro-grupo" open>
-                    <summary class="filtro-header" style="font-weight: bold; font-size: 1.2rem; display: flex; align-items: center; gap: 10px;">
-                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 0V14M0 7H14" stroke="#1A1A1A" stroke-width="2"/></svg>
-                        Categoria
-                    </summary>
+                    <summary class="filtro-header">Categorias</summary>
                     <ul class="filtro-lista">
                         <li class="filtro-item-opcao"><label><input type="checkbox"> Acessórios</label></li>
                         <li class="filtro-item-opcao"><label><input type="checkbox"> Face</label></li>
@@ -103,11 +73,11 @@
                 </details>
 
                 <details class="filtro-grupo">
-                    <summary class="filtro-header" style="font-weight: bold; font-size: 1.2rem; display: flex; align-items: center; gap: 10px;">
-                        <svg width="14" height="2" viewBox="0 0 14 2" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 1H14" stroke="#1A1A1A" stroke-width="2"/></svg>
-                        Categoria
-                    </summary>
+                    <summary class="filtro-header">Preço</summary>
                     <ul class="filtro-lista">
+                        <li class="filtro-item-opcao">
+                            <label><input type="checkbox"> Até R$ 50</label>
+                        </li>
                     </ul>
                 </details>
             </nav>
@@ -115,10 +85,12 @@
 
         <section class="produtos-vitrine">
             <div class="vitrine-header">
-                <span class="contagem" style="color: #E6B7C1; font-weight: bold;">XX produtos</span>
+                <span class="contagem">XX produtos</span>
                 <div class="ordenacao-dropdown">
-                    <select class="select-customizado" style="border: 1px solid #7A1E3A; border-radius: 20px; padding: 8px 35px 8px 15px; color: #1a1a1a; appearance: none; background: transparent url('data:image/svg+xml;utf8,<svg width=\"12\" height=\"8\" viewBox=\"0 0 12 8\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M1 6.5L6 1.5L11 6.5\" stroke=\"%231A1A1A\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>') no-repeat right 15px center; font-family: inherit; font-size: 1rem;">
+                    <select class="select-customizado">
                         <option value="mais-vendidos">Mais Vendidos</option>
+                        <option value="menor-preco">Menor Preço</option>
+                        <option value="maior-preco">Maior Preço</option>
                     </select>
                 </div>
             </div>
@@ -128,13 +100,14 @@
                     <img src="img/img-produtos-corretivos-alomana.jpg" alt="Corretivo Colorido" class="product-image">
                     <div class="product-info">
                         <h3 class="product-title">Corretivo Colorido | 4 Seasons</h3>
-                        <p class="product-description">Alta cobertura para neutralizar marcas e imperfeições da pele.</p>
+                        <p class="product-description">Alta cobertura para neutralizar marcas e imperfeições da pele.
+                        </p>
                         <div class="product-footer">
                             <div class="price-box">
                                 <span class="price-value">R$ 59,90</span>
-                                <span class="price-installments">ou em 2x R$ 29,95</span>
+                                <span class="price-installments">ou em 2x de R$ 29,95</span>
                             </div>
-                            <button class="botao" style="border:none; cursor:pointer;">Comprar</button>
+                            <button class="buy-button">Comprar</button>
                         </div>
                     </div>
                 </article>
@@ -142,29 +115,32 @@
                 <article class="product-card">
                     <img src="img/img-produtos-base-alomana.jpg" alt="Base Liquida Fluid" class="product-image">
                     <div class="product-info">
-                        <h3 class="product-title">Base Liquida | Second Skin</h3>
-                        <p class="product-description">Proteção total que devolve a sua integridade.</p>
+                        <h3 class="product-title">Base Liquida Fluid | Second Skin</h3>
+                        <p class="product-description">Age como uma segunda pele. Proteção total que devolve a sua
+                            integridade.</p>
                         <div class="product-footer">
                             <div class="price-box">
                                 <span class="price-value">R$ 98,90</span>
-                                <span class="price-installments">ou em 2x R$ 49,45</span>
+                                <span class="price-installments">ou em 2x de R$ 49,45</span>
                             </div>
-                            <button class="botao" style="border:none; cursor:pointer;">Comprar</button>
+                            <button class="buy-button">Comprar</button>
                         </div>
                     </div>
                 </article>
 
                 <article class="product-card">
-                    <img src="img/img-produtos-paletaDeSombra-alomana.jpg" alt="Paleta de Sombras" class="product-image">
+                    <img src="img/img-produtos-paletaDeSombra-alomana.jpg" alt="Paleta de Sombras"
+                        class="product-image">
                     <div class="product-info">
                         <h3 class="product-title">Paleta de Sombras | Behind The Scenes</h3>
-                        <p class="product-description">Tons intensos que revelam suas nuances.</p>
+                        <p class="product-description">Crie profundidade e camadas. Tons intensos que revelam suas
+                            nuances.</p>
                         <div class="product-footer">
                             <div class="price-box">
                                 <span class="price-value">R$ 119,90</span>
-                                <span class="price-installments">ou em 2x R$ 59,95</span>
+                                <span class="price-installments">ou em 2x de R$ 59,95</span>
                             </div>
-                            <button class="botao" style="border:none; cursor:pointer;">Comprar</button>
+                            <button class="buy-button">Comprar</button>
                         </div>
                     </div>
                 </article>
@@ -177,143 +153,44 @@
                         <div class="product-footer">
                             <div class="price-box">
                                 <span class="price-value">R$ 64,90</span>
-                                <span class="price-installments">ou em 2x R$ 32,45</span>
+                                <span class="price-installments">ou em 2x de R$ 32,45</span>
                             </div>
-                            <button class="botao" style="border:none; cursor:pointer;">Comprar</button>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Segunda Linha -->
-                <article class="product-card">
-                    <img src="img/img-categorias-labios-alomana.jpg" alt="Produto" class="product-image">
-                    <div class="product-info">
-                        <h3 class="product-title">Produto</h3>
-                        <p class="product-description">descrição do produto ....................</p>
-                        <div class="product-footer">
-                            <div class="price-box">
-                                <span class="price-value">Valor</span>
-                                <span class="price-installments">ou em 2x valor</span>
-                            </div>
-                            <button class="botao" style="border:none; cursor:pointer;">Comprar</button>
+                            <button class="buy-button">Comprar</button>
                         </div>
                     </div>
                 </article>
 
                 <article class="product-card">
-                    <img src="img/img-categorias-labios-alomana.jpg" alt="Produto" class="product-image">
+                    <img src="img/img-produtos-alomana.jpg" alt="Produto" class="product-image">
                     <div class="product-info">
                         <h3 class="product-title">Produto</h3>
-                        <p class="product-description">descrição do produto ....................</p>
+                        <p class="product-description">Descrição do produto .....................</p>
                         <div class="product-footer">
                             <div class="price-box">
                                 <span class="price-value">Valor</span>
                                 <span class="price-installments">ou em 2x valor</span>
                             </div>
-                            <button class="botao" style="border:none; cursor:pointer;">Comprar</button>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="product-card">
-                    <img src="img/img-categorias-labios-alomana.jpg" alt="Produto" class="product-image">
-                    <div class="product-info">
-                        <h3 class="product-title">Produto</h3>
-                        <p class="product-description">descrição do produto ....................</p>
-                        <div class="product-footer">
-                            <div class="price-box">
-                                <span class="price-value">Valor</span>
-                                <span class="price-installments">ou em 2x valor</span>
-                            </div>
-                            <button class="botao" style="border:none; cursor:pointer;">Comprar</button>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="product-card">
-                    <img src="img/img-categorias-labios-alomana.jpg" alt="Produto" class="product-image">
-                    <div class="product-info">
-                        <h3 class="product-title">Produto</h3>
-                        <p class="product-description">descrição do produto ....................</p>
-                        <div class="product-footer">
-                            <div class="price-box">
-                                <span class="price-value">Valor</span>
-                                <span class="price-installments">ou em 2x valor</span>
-                            </div>
-                            <button class="botao" style="border:none; cursor:pointer;">Comprar</button>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Terceira Linha -->
-                <article class="product-card">
-                    <img src="img/img-categorias-labios-alomana.jpg" alt="Produto" class="product-image">
-                    <div class="product-info">
-                        <h3 class="product-title">Produto</h3>
-                        <p class="product-description">descrição do produto ....................</p>
-                        <div class="product-footer">
-                            <div class="price-box">
-                                <span class="price-value">Valor</span>
-                                <span class="price-installments">ou em 2x valor</span>
-                            </div>
-                            <button class="botao" style="border:none; cursor:pointer;">Comprar</button>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="product-card">
-                    <img src="img/img-categorias-labios-alomana.jpg" alt="Produto" class="product-image">
-                    <div class="product-info">
-                        <h3 class="product-title">Produto</h3>
-                        <p class="product-description">descrição do produto ....................</p>
-                        <div class="product-footer">
-                            <div class="price-box">
-                                <span class="price-value">Valor</span>
-                                <span class="price-installments">ou em 2x valor</span>
-                            </div>
-                            <button class="botao" style="border:none; cursor:pointer;">Comprar</button>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="product-card">
-                    <img src="img/img-categorias-labios-alomana.jpg" alt="Produto" class="product-image">
-                    <div class="product-info">
-                        <h3 class="product-title">Produto</h3>
-                        <p class="product-description">descrição do produto ....................</p>
-                        <div class="product-footer">
-                            <div class="price-box">
-                                <span class="price-value">Valor</span>
-                                <span class="price-installments">ou em 2x valor</span>
-                            </div>
-                            <button class="botao" style="border:none; cursor:pointer;">Comprar</button>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="product-card">
-                    <img src="img/img-categorias-labios-alomana.jpg" alt="Produto" class="product-image">
-                    <div class="product-info">
-                        <h3 class="product-title">Produto</h3>
-                        <p class="product-description">descrição do produto ....................</p>
-                        <div class="product-footer">
-                            <div class="price-box">
-                                <span class="price-value">Valor</span>
-                                <span class="price-installments">ou em 2x valor</span>
-                            </div>
-                            <button class="botao" style="border:none; cursor:pointer;">Comprar</button>
+                            <button class="buy-button">Comprar</button>
                         </div>
                     </div>
                 </article>
             </div>
         </section>
-
-        <!-- Scroll Up Button -->
-        <a href="#" style="position: absolute; bottom: 0; right: 0; display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background-color: #E4DABF; border-radius: 50%; text-decoration: none;">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 20V4M12 4L5 11M12 4L19 11" stroke="#7A1E3A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-        </a>
     </main>
+
+    <footer class="main-footer">
+        <div class="footer-grid">
+            <div class="footer-logo">
+                <img src="img/ifb-logo.png" alt="Logo IFB">
+            </div>
+
+            <div class="footer-info">
+                <p class="copyright">© 2026 – Alô!Mana?<br>Projeto acadêmico</p>
+                <p class="instituicao">Instituto Federal de Brasília – IFB</p>
+            </div>
+
+            <div class="footer-spacer"></div>
+        </div>
+    </footer>
 </body>
 </html>
