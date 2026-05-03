@@ -2134,3 +2134,65 @@ body {
     background-color: #7A1E3A;
     color: #ffffff;
 }
+
+/* === SEARCH OVERLAY === */
+.search-overlay-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999;
+    display: none;
+}
+.search-overlay-container.active {
+    display: flex;
+}
+.search-sidebar-panel {
+    width: 35%;
+    min-width: 320px;
+    max-width: 500px;
+    height: 100%;
+    background-color: #ffffff;
+    position: relative;
+    z-index: 10000;
+}
+.search-panel-header {
+    display: flex;
+    align-items: center;
+    padding: 3rem 2rem;
+    gap: 1rem;
+}
+.panel-icon-search, .panel-icon-close {
+    width: 1.2rem;
+    height: 1.2rem;
+    color: #1a1a1a;
+}
+.panel-icon-search {
+    flex-shrink: 0;
+}
+.panel-search-input {
+    flex-grow: 1;
+    border: none;
+    outline: none;
+    font-size: 0.95rem;
+    font-family: var(--ff-primary, 'Montserrat', sans-serif);
+    color: #1a1a1a;
+}
+.panel-search-input::placeholder {
+    color: #1a1a1a;
+}
+.panel-close-link {
+    cursor: pointer;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #1a1a1a;
+    text-decoration: none;
+}
+.search-overlay-backdrop {
+    flex-grow: 1;
+    background-color: rgba(0, 0, 0, 0.5);
+    height: 100%;
+}
