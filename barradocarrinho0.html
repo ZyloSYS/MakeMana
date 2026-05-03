@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alo! Mana? - Carrinho Vazio</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="cart-open-body">
+    
+    <!-- Fundo Escuro Overlay -->
+    <div class="cart-overlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background-color: rgba(0, 0, 0, 0.4); z-index: 100;">
+        <!-- Imagem simulando o fundo do site como na referência (apenas para visualização) -->
+        <img src="img/banner-homepage.jpg" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.5;" alt="Fundo">
+    </div>
+
+    <!-- Sidebar do Carrinho (Vazio) -->
+    <aside class="cart-sidebar" style="position: fixed; top: 0; right: 0; width: 450px; height: 100vh; background-color: #ffffff; z-index: 200; display: flex; flex-direction: column; padding: 30px; box-shadow: -5px 0 15px rgba(0,0,0,0.1);">
+        
+        <header class="cart-sidebar__header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 50px;">
+            <div class="cart-sidebar__title" style="font-family: var(--ff-primary, 'Montserrat', sans-serif); font-weight: 500; font-size: 1.1rem; color: #1a1a1a;">
+                <span>0 item</span>
+            </div>
+            <button class="cart-sidebar__close" style="background: none; border: none; font-size: 1.8rem; color: #1a1a1a; cursor: pointer;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M18 6L6 18M6 6L18 18" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+        </header>
+
+        <div class="cart-empty-state" style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px; margin-top: -100px;">
+            
+            <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-bottom: 20px;">
+                <path d="M12.5 16.6667H25L36.1667 70.25C36.5478 72.0831 37.5255 73.7153 38.9377 74.8732C40.35 76.0312 42.1105 76.6455 43.9583 76.6667H76.6667C78.5146 76.6455 80.275 76.0312 81.6873 74.8732C83.0995 73.7153 84.0772 72.0831 84.4583 70.25L91.6667 37.5H29.1667" stroke="#E6B7C1" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="43.75" cy="87.5" r="5" fill="#E6B7C1"/>
+                <circle cx="77.0833" cy="87.5" r="5" fill="#E6B7C1"/>
+                <path d="M34.5833 54.1667H86.6667" stroke="#E6B7C1" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+
+            <h2 style="color: #E6B7C1; font-family: var(--ff-primary, 'Montserrat', sans-serif); font-size: 1.5rem; font-weight: 500; margin-bottom: 10px;">Seu carrinho está vazio!</h2>
+            
+            <a href="produtos.html" style="background-color: #E6B7C1; color: #1a1a1a; text-decoration: none; padding: 12px 30px; border-radius: 25px; font-family: var(--ff-primary, 'Montserrat', sans-serif); font-weight: 500; font-size: 1.1rem; transition: background-color 0.2s;">
+                Explore a loja
+            </a>
+        </div>
+    </aside>
+</body>
+</html>

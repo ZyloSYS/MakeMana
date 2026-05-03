@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alo! Mana? - Pedido Concluído</title>
+    <link rel="shortcut icon" href="img/logo-favicon-alomana.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="variables.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body style="display: flex; flex-direction: column; min-height: 100vh;">
+    <header class="main-header">
+        <div class="header-container">
+            <div class="search-wrapper">
+                <div class="search-container">
+                    <input type="text" placeholder="Busque por batom, blush, base…">
+                    <svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg" class="icon-search">
+                        <path
+                            d="M16.6 18L10.3 11.7C9.8 12.1 9.225 12.4167 8.575 12.65C7.925 12.8833 7.23333 13 6.5 13C4.68333 13 3.14583 12.3708 1.8875 11.1125C0.629167 9.85417 0 8.31667 0 6.5C0 4.68333 0.629167 3.14583 1.8875 1.8875C3.14583 0.629167 4.68333 0 6.5 0C8.31667 0 9.85417 0.629167 11.1125 1.8875C12.3708 3.14583 13 4.68333 13 6.5C13 7.23333 12.8833 7.925 12.65 8.575C12.4167 9.225 12.1 9.8 11.7 10.3L18 16.6L16.6 18ZM6.5 11C7.75 11 8.8125 10.5625 9.6875 9.6875C10.5625 8.8125 11 7.75 11 6.5C11 5.25 10.5625 4.1875 9.6875 3.3125C8.8125 2.4375 7.75 2 6.5 2C5.25 2 4.1875 2.4375 3.3125 3.3125C2.4375 4.1875 2 5.25 2 6.5C2 7.75 2.4375 8.8125 3.3125 9.6875C4.1875 10.5625 5.25 11 6.5 11Z"
+                            fill="currentColor" />
+                    </svg>
+                </div>
+            </div>
+
+            <a href="index.html"><img class="logo-alomana" src="img/logo-alomana.png" alt="Alô!Mana? Logo"></a>
+
+            <div class="header-actions">
+                <div class="dark-mode-wrapper">
+                    <label class="switch">
+                        <input type="checkbox">
+                        <span class="slider"></span>
+                    </label>
+                    <span class="dark-mode-text">Dark-Mode</span>
+                </div>
+                <svg viewBox="0 0 54 54" xmlns="http://www.w3.org/2000/svg" class="icon-cart">
+                    <path
+                        d="M16 53.33c-1.47 0-2.72-.52-3.77-1.57-1.04-1.04-1.56-2.3-1.56-3.76s.52-2.72 1.56-3.77c1.05-1.04 2.3-1.57 3.77-1.57s2.72.53 3.77 1.57c1.04 1.05 1.56 2.3 1.56 3.77s-.52 2.72-1.56 3.77c-1.05 1.05-2.3 1.57-3.77 1.57zm26.67 0c-1.47 0-2.72-.52-3.77-1.57-1.04-1.04-1.56-2.3-1.56-3.76s.52-2.72 1.56-3.77c1.05-1.04 2.3-1.57 3.77-1.57s2.72.53 3.77 1.57c1.04 1.05 1.56 2.3 1.56 3.77s-.52 2.72-1.56 3.77c-1.05 1.05-2.3 1.57-3.77 1.57zM13.73 10.67l6.4 13.33H38.8l7.33-13.33H13.73zM11.2 5.33h39.33c1.03 0 1.8.46 2.34 1.37.53.9.55 1.83.06 2.76l-9.46 17.07c-.49.89-1.15 1.58-1.97 2.07-.82.49-1.72.73-2.7.73H18.93l-2.93 5.34H48V40H16c-2 0-3.51-.88-4.53-2.63-1.02-1.76-1.07-3.5-.13-5.24l3.6-6.53L5.33 5.33H0V0h8.67l2.53 5.33z"
+                        fill="currentColor" />
+                </svg>
+            </div>
+        </div>
+    </header>
+    <nav class="main-nav">
+        <ul class="nav-list">
+            <li><a href="produtos.html" class="nav-link">TODOS OS PRODUTOS</a></li>
+            <li><a href="kits.html" class="nav-link">KITS</a></li>
+            <li><a href="skincare.html" class="nav-link">SKINCARE</a></li>
+            <li><a href="maquiagem.html" class="nav-link">MAQUIAGEM</a></li>
+            <li><a href="institucional.html" class="nav-link">INSTITUCIONAL</a></li>
+        </ul>
+    </nav>
+
+    <main style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 60px 20px;">
+        <div style="text-align: center; margin-bottom: 40px; width: 100%; max-width: 800px;">
+            <h1 style="color: #7A1E3A; font-size: 2rem; margin-bottom: 15px; font-weight: bold;">Seu pedido foi recebido com sucesso!</h1>
+            <p style="color: #666; font-size: 1.2rem; margin-bottom: 30px;">#000000</p>
+            <div style="height: 2px; background-color: #ccc; width: 100%;"></div>
+        </div>
+
+        <div style="width: 100%; max-width: 600px;">
+            <div class="titulo-secao titulo-secao--compacto" style="margin-bottom: 40px;">
+                <span style="font-style: italic; font-size: 1.4rem; color: #7A1E3A;">Resumo</span>
+                <h2 style="font-size: 2rem; font-weight: bold; color: #7A1E3A;">do pedido</h2>
+                <div class="linha" style="width: 100px; height: 3px; background-color: #E6B7C1; margin-top: 5px;"></div>
+            </div>
+
+            <div style="display: flex; gap: 20px; align-items: center; margin-bottom: 50px;">
+                <img src="img/img-produtos-corretivos-alomana.jpg" alt="Corretivo Colorido 4 Seasons" style="width: 110px; height: 110px; border-radius: 10px; object-fit: cover;">
+                <div style="flex: 1; display: flex; flex-direction: column;">
+                    <h3 style="color: #7A1E3A; font-size: 1.15rem; margin-bottom: 5px; font-weight: bold;">Corretivo Colorido | 4 Seasons - <span style="font-style: italic; font-weight: normal;">10ml</span></h3>
+                    <p style="font-weight: bold; font-size: 1.1rem; color: #1a1a1a;">R$ 59,90</p>
+                </div>
+                <div style="align-self: flex-end;">
+                    <span style="display: inline-block; padding: 8px 18px; border: 1px solid #E6B7C1; border-radius: 20px; color: #1a1a1a; font-weight: 500;">01</span>
+                </div>
+            </div>
+
+            <div style="border-top: 1px solid #eee; padding-top: 20px; padding-bottom: 20px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-weight: 500; font-size: 1.2rem; color: #1a1a1a;">Total</span>
+                <span style="color: #7A1E3A; font-weight: bold; font-size: 1.3rem;">R$ 00,00</span>
+            </div>
+        </div>
+    </main>
+
+    <footer class="main-footer" style="margin-top: auto;">
+        <div class="footer-grid">
+            <div class="footer-logo">
+                <img src="img/IFB-logo.png" alt="Logo IFB">
+            </div>
+            <div class="footer-info">
+                <p class="copyright">© 2025 – Alo!Mana?<br>Projeto acadêmico</p>
+                <p class="instituicao">Instituto Federal de Brasília – IFB</p>
+            </div>
+            <div class="footer-spacer"></div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1205,7 +1205,7 @@ body {
 }
 
 .apresentacao__texto h1 {
-  color: var(--cor-destaque);
+  color: #7A1E3A;
   font-size: 2.2rem;
   margin-bottom: 8px;
 }
@@ -1283,3 +1283,854 @@ body {
   color: var(--cor-texto-suave);
 }
 
+.botao {
+  background-color: #E6B7C1;
+  color: #1a1a1a;
+  padding: 0.5rem 1.5rem;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: background-color 0.2s;
+  font-family: var(--ff-secondary, 'Lato', sans-serif);
+}
+
+.botao:hover {
+  background-color: #d4a5af;
+}
+
+/* === ADMIN DASHBOARD === */
+.admin-body {
+    font-family: var(--ff-secondary, 'Lato', sans-serif);
+    background-color: #ffffff;
+    color: #1a1a1a;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #ececec;
+    border-bottom: 2px solid #a3a3a3;
+    height: 80px;
+}
+
+.admin-header__logo {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.admin-logo-img {
+    height: 50px;
+}
+
+.admin-header__title {
+    font-family: var(--ff-primary, 'Montserrat', sans-serif);
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.admin-title-red {
+    color: #7A1E3A;
+}
+
+.admin-title-black {
+    color: #1A1A1A;
+}
+
+.admin-header__user {
+    display: flex;
+    align-items: center;
+}
+
+.admin-user-pill {
+    display: flex;
+    align-items: center;
+    background-color: #000;
+    color: #fff;
+    border-radius: 50px;
+    padding: 0.4rem 1.2rem 0.4rem 0.4rem;
+    gap: 1rem;
+    cursor: pointer;
+}
+
+.admin-user-avatar {
+    width: 35px;
+    height: 35px;
+    background-color: #d9d9d9;
+    border-radius: 50%;
+}
+
+.admin-user-name {
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+.admin-user-icon {
+    font-size: 0.9rem;
+}
+
+.admin-layout {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+.admin-sidebar {
+    width: 260px;
+    background-color: #dfdfdf;
+    border-right: 2px solid #a3a3a3;
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-nav {
+    display: flex;
+    flex-direction: column;
+    padding-top: 2rem;
+    gap: 0.5rem;
+}
+
+.admin-nav__link {
+    display: flex;
+    align-items: center;
+    padding: 1rem 2rem;
+    color: #1a1a1a;
+    font-weight: 700;
+    font-size: 1.1rem;
+    gap: 1rem;
+    text-decoration: none;
+    transition: background-color 0.2s;
+}
+
+.admin-nav__link i {
+    font-size: 1.4rem;
+    width: 25px;
+    text-align: center;
+}
+
+.admin-nav__link:hover {
+    background-color: #d0d0d0;
+}
+
+.admin-nav__link--active {
+    background-color: #c4c4c4;
+}
+
+.admin-main {
+    flex: 1;
+    padding: 2rem;
+    overflow-y: auto;
+    background-color: #ffffff;
+}
+
+.admin-main__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 1px solid #7a7a7a;
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
+}
+
+.admin-main__title {
+    font-family: var(--ff-primary, 'Montserrat', sans-serif);
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 0.2rem;
+}
+
+.admin-main__subtitle {
+    font-size: 1rem;
+    color: #4a4a4a;
+}
+
+.admin-main__actions {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    font-size: 1.8rem;
+    color: #1a1a1a;
+}
+
+.admin-notification {
+    position: relative;
+    cursor: pointer;
+}
+
+.admin-notification-dot {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    width: 8px;
+    height: 8px;
+    background-color: #1a1a1a;
+    border-radius: 50%;
+}
+
+.admin-settings-icon {
+    cursor: pointer;
+}
+
+.admin-summary {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.admin-summary__card {
+    flex: 1;
+    background-color: #dcdcdc;
+    border-radius: 6px;
+    padding: 1.2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 80px;
+}
+
+.admin-summary__label {
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.admin-summary__value {
+    font-weight: 700;
+    font-size: 2rem;
+}
+
+.admin-panel {
+    background-color: #eaeaea;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.admin-panel__header {
+    background-color: #a8a8a8;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid #7a7a7a;
+}
+
+.admin-panel__title {
+    font-family: var(--ff-primary, 'Montserrat', sans-serif);
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 0.2rem;
+}
+
+.admin-panel__subtitle {
+    font-size: 1rem;
+    color: #1a1a1a;
+}
+
+.admin-panel__body {
+    display: flex;
+    gap: 1.5rem;
+    padding: 1.5rem;
+}
+
+.admin-panel__box {
+    flex: 1;
+    background-color: #dcdcdc;
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-panel__box-title {
+    font-weight: 700;
+    font-size: 1.1rem;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid #7a7a7a;
+}
+
+.admin-panel__box-content {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.admin-panel__box-content p {
+    font-size: 1rem;
+    color: #1a1a1a;
+}
+
+.admin-panel__box-content p strong {
+    font-weight: 700;
+}
+
+.admin-panel__box-content--empty {
+    flex: 1;
+    min-height: 200px;
+}
+
+/* === ADMIN LOGIN === */
+.admin-login-body {
+    background-color: #F5F5F5;
+    height: 100vh;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+    font-family: var(--ff-secondary, 'Lato', sans-serif);
+}
+
+.admin-login-bg-stripe {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 18%;
+    width: 48%;
+    background-color: #E2D6BE;
+    z-index: 0;
+}
+
+.admin-login-bg-stripe::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 45vh;
+    height: 45vh;
+    background-color: #F5F5F5;
+    border-radius: 50%;
+    transform: translate(30%, -50%);
+}
+
+.admin-login-logo-box {
+    position: absolute;
+    top: 4rem;
+    left: 5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    z-index: 5;
+}
+
+.admin-login-logo-box img {
+    height: 70px;
+}
+
+.admin-login-title {
+    font-family: var(--ff-primary, 'Montserrat', sans-serif);
+    font-size: 2rem;
+    line-height: 1;
+}
+
+.admin-login-card-container {
+    position: absolute;
+    top: 50%;
+    left: 65%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+}
+
+.admin-login-card {
+    background-color: rgba(226, 214, 190, 0.4);
+    border-radius: 10px;
+    padding: 4rem 3rem 3rem;
+    width: 380px;
+}
+
+.admin-login-avatar {
+    width: 130px;
+    height: 130px;
+    background-color: #D6D6D6;
+    border-radius: 50%;
+    margin: 0 auto 3rem;
+}
+
+.admin-login-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-login-input-group {
+    display: flex;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    border-radius: 8px;
+}
+
+.admin-login-icon {
+    background-color: #7A1E3A;
+    color: #fff;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px 0 0 8px;
+    font-size: 1.2rem;
+}
+
+.admin-login-input {
+    height: 50px;
+    border: none;
+    flex: 1;
+    border-radius: 0 8px 8px 0;
+    padding: 0 1rem;
+    font-family: var(--ff-secondary, 'Lato', sans-serif);
+    font-size: 1rem;
+    outline: none;
+    color: #333;
+}
+
+.admin-login-input::placeholder {
+    color: #a0a0a0;
+}
+
+.admin-login-btn {
+    background-color: #7A1E3A;
+    color: white;
+    font-weight: 700;
+    font-family: var(--ff-primary, 'Montserrat', sans-serif);
+    border: none;
+    border-radius: 25px;
+    padding: 0.9rem 3rem;
+    margin: 1.5rem auto 0;
+    cursor: pointer;
+    font-size: 1rem;
+    letter-spacing: 1px;
+}
+
+.admin-panel {
+    background-color: #eaeaea;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.admin-panel__header {
+    background-color: #a8a8a8;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid #7a7a7a;
+}
+
+.admin-panel__title {
+    font-family: var(--ff-primary, 'Montserrat', sans-serif);
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 0.2rem;
+}
+
+.admin-panel__subtitle {
+    font-size: 1rem;
+    color: #1a1a1a;
+}
+
+.admin-panel__body {
+    display: flex;
+    gap: 1.5rem;
+    padding: 1.5rem;
+}
+
+.admin-panel__box {
+    flex: 1;
+    background-color: #dcdcdc;
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-panel__box-title {
+    font-weight: 700;
+    font-size: 1.1rem;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid #7a7a7a;
+}
+
+.admin-panel__box-content {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.admin-panel__box-content p {
+    font-size: 1rem;
+    color: #1a1a1a;
+}
+
+.admin-panel__box-content p strong {
+    font-weight: 700;
+}
+
+.admin-panel__box-content--empty {
+    flex: 1;
+    min-height: 200px;
+}
+
+/* === ADMIN LOGIN === */
+.admin-login-body {
+    background-color: #F5F5F5;
+    height: 100vh;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+    font-family: var(--ff-secondary, 'Lato', sans-serif);
+}
+
+.admin-login-bg-stripe {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 18%;
+    width: 48%;
+    background-color: #E2D6BE;
+    z-index: 0;
+}
+
+.admin-login-bg-stripe::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 45vh;
+    height: 45vh;
+    background-color: #F5F5F5;
+    border-radius: 50%;
+    transform: translate(30%, -50%);
+}
+
+.admin-login-logo-box {
+    position: absolute;
+    top: 4rem;
+    left: 5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    z-index: 5;
+}
+
+.admin-login-logo-box img {
+    height: 70px;
+}
+
+.admin-login-title {
+    font-family: var(--ff-primary, 'Montserrat', sans-serif);
+    font-size: 2rem;
+    line-height: 1;
+}
+
+.admin-login-card-container {
+    position: absolute;
+    top: 50%;
+    left: 65%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+}
+
+.admin-login-card {
+    background-color: rgba(226, 214, 190, 0.4);
+    border-radius: 10px;
+    padding: 4rem 3rem 3rem;
+    width: 380px;
+}
+
+.admin-login-avatar {
+    width: 130px;
+    height: 130px;
+    background-color: #D6D6D6;
+    border-radius: 50%;
+    margin: 0 auto 3rem;
+}
+
+.admin-login-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-login-input-group {
+    display: flex;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    border-radius: 8px;
+}
+
+.admin-login-icon {
+    background-color: #7A1E3A;
+    color: #fff;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px 0 0 8px;
+    font-size: 1.2rem;
+}
+
+.admin-login-input {
+    height: 50px;
+    border: none;
+    flex: 1;
+    border-radius: 0 8px 8px 0;
+    padding: 0 1rem;
+    font-family: var(--ff-secondary, 'Lato', sans-serif);
+    font-size: 1rem;
+    outline: none;
+    color: #333;
+}
+
+.admin-login-input::placeholder {
+    color: #a0a0a0;
+}
+
+.admin-login-btn {
+    background-color: #7A1E3A;
+    color: white;
+    font-weight: 700;
+    font-family: var(--ff-primary, 'Montserrat', sans-serif);
+    border: none;
+    border-radius: 25px;
+    padding: 0.9rem 3rem;
+    margin: 1.5rem auto 0;
+    cursor: pointer;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    transition: background-color 0.2s;
+    width: fit-content;
+    align-self: center;
+}
+
+.admin-login-btn:hover {
+    background-color: #5c162b;
+}
+
+/* === CARRINHO SIDEBAR === */
+.cart-open-body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: var(--ff-secondary, 'Lato', sans-serif);
+}
+
+.cart-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 1000;
+}
+
+.cart-sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 400px;
+    height: 100vh;
+    background-color: #ffffff;
+    z-index: 1010;
+    display: flex;
+    flex-direction: column;
+    box-shadow: -4px 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.cart-sidebar__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+}
+
+.cart-sidebar__title {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.3rem;
+    color: #1a1a1a;
+}
+
+.cart-sidebar__close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #1a1a1a;
+    cursor: pointer;
+}
+
+.cart-sidebar__items {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0 2rem;
+}
+
+.cart-item {
+    display: flex;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    margin-bottom: 1rem;
+}
+
+.cart-item__img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+    background-color: #f0f0f0;
+}
+
+.cart-item__info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.cart-item__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.cart-item__name {
+    font-family: var(--ff-primary, 'Montserrat', sans-serif);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #7A1E3A;
+    margin: 0 0 0.5rem 0;
+    line-height: 1.2;
+    padding-right: 1rem;
+}
+
+.cart-item__remove {
+    background: none;
+    border: none;
+    color: #a0a0a0;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.cart-item__price {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0 0 1rem 0;
+}
+
+.cart-item__quantity {
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid #e0e0e0;
+    border-radius: 20px;
+    padding: 0.2rem 0.5rem;
+    width: fit-content;
+}
+
+.qty-btn {
+    background: none;
+    border: none;
+    font-size: 0.8rem;
+    color: #1a1a1a;
+    cursor: pointer;
+    padding: 0.2rem 0.5rem;
+}
+
+.qty-value {
+    font-size: 0.9rem;
+    margin: 0 0.5rem;
+    color: #1a1a1a;
+}
+
+.cart-sidebar__footer {
+    padding: 2rem;
+    border-top: 1px solid #f0f0f0;
+}
+
+.cart-sidebar__coupon {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.coupon-input {
+    flex: 1;
+    border: 1px solid #d0d0d0;
+    border-radius: 20px;
+    padding: 0.8rem 1.2rem;
+    font-family: var(--ff-secondary, 'Lato', sans-serif);
+    font-size: 0.9rem;
+    outline: none;
+}
+
+.coupon-btn {
+    background-color: #E6B7C1;
+    color: #1a1a1a;
+    border: none;
+    border-radius: 20px;
+    padding: 0 1.5rem;
+    font-weight: 600;
+    font-family: var(--ff-secondary, 'Lato', sans-serif);
+    cursor: pointer;
+    font-size: 0.95rem;
+}
+
+.cart-sidebar__summary {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-bottom: 2rem;
+}
+
+.summary-line {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.95rem;
+    color: #4a4a4a;
+}
+
+.summary-total {
+    margin-top: 0.5rem;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.total-label {
+    color: #1a1a1a;
+}
+
+.total-value {
+    color: #7A1E3A;
+}
+
+.cart-sidebar__actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cart-sidebar__continue {
+    font-size: 0.75rem;
+    color: #1a1a1a;
+    text-decoration: underline;
+    text-align: center;
+    line-height: 1.2;
+}
+
+.cart-sidebar__checkout {
+    border: 2px solid #7A1E3A;
+    background-color: #ffffff;
+    color: #7A1E3A;
+    font-family: var(--ff-primary, 'Montserrat', sans-serif);
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 0.8rem 2rem;
+    border-radius: 25px;
+    text-decoration: none;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.cart-sidebar__checkout:hover {
+    background-color: #7A1E3A;
+    color: #ffffff;
+}

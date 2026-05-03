@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alo! Mana? - Barra de Carrinho</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="cart-open-body">
+    
+    <!-- Fundo Escuro Overlay -->
+    <div class="cart-overlay">
+        <!-- Imagem simulando o fundo do site como na referência -->
+        <div style="width: 100%; height: 100vh; background: #e0e0e0; display: flex; align-items: center; justify-content: center;">
+             <span style="color:#777; font-family: sans-serif;">(Fundo do site obscurecido)</span>
+        </div>
+    </div>
+
+    <!-- Sidebar do Carrinho -->
+    <aside class="cart-sidebar">
+        <header class="cart-sidebar__header">
+            <div class="cart-sidebar__title">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span>1 item</span>
+            </div>
+            <button class="cart-sidebar__close"><i class="fa-solid fa-xmark"></i></button>
+        </header>
+
+        <div class="cart-sidebar__items">
+            <div class="cart-item">
+                <img src="img/img-produtos-paletaDeSombra-alomana.jpg" alt="Corretivo Colorido" class="cart-item__img">
+                <div class="cart-item__info">
+                    <div class="cart-item__top">
+                        <h3 class="cart-item__name">Corretivo Colorido | 4 Seasons - 10ml</h3>
+                        <button class="cart-item__remove"><i class="fa-regular fa-trash-can"></i></button>
+                    </div>
+                    <p class="cart-item__price">R$ 59,90</p>
+                    <div class="cart-item__quantity">
+                        <button class="qty-btn"><i class="fa-solid fa-minus"></i></button>
+                        <span class="qty-value">01</span>
+                        <button class="qty-btn"><i class="fa-solid fa-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="cart-sidebar__footer">
+            <div class="cart-sidebar__coupon">
+                <input type="text" placeholder="Cupom de desconto" class="coupon-input">
+                <button class="coupon-btn">Aplicar</button>
+            </div>
+            
+            <div class="cart-sidebar__summary">
+                <div class="summary-line">
+                    <span>Subtotal</span>
+                    <span>R$ 59,90</span>
+                </div>
+                <div class="summary-line">
+                    <span>Descontos</span>
+                    <span>R$ 00,00</span>
+                </div>
+                <div class="summary-line summary-total">
+                    <span class="total-label">Total</span>
+                    <span class="total-value">R$ 59,90</span>
+                </div>
+            </div>
+
+            <div class="cart-sidebar__actions">
+                <a href="#" class="cart-sidebar__continue">CONTINUAR<br>ADICONANDO</a>
+                <a href="finalizaçaocompra.html" class="cart-sidebar__checkout">Concluir Pedido</a>
+            </div>
+        </footer>
+    </aside>
+
+</body>
+</html>

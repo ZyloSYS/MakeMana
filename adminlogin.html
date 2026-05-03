@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alo! Mana? - Admin Login</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body class="admin-login-body">
+
+    <!-- Stripe and Shape -->
+    <div class="admin-login-bg-stripe"></div>
+
+    <!-- Logo -->
+    <div class="admin-login-logo-box">
+        <img src="img/logo-alomana.png" alt="Logo Alo! Mana?">
+        <h1 class="admin-login-title"><span class="admin-title-red">Alo!</span><br><span
+                class="admin-title-black">Mana?</span></h1>
+    </div>
+
+    <!-- Login Card -->
+    <div class="admin-login-card-container">
+        <div class="admin-login-card">
+            <div class="admin-login-avatar"></div>
+
+            <form action="admindashboard.html" class="admin-login-form">
+                <div class="admin-login-input-group">
+                    <span class="admin-login-icon"><i class="fa-solid fa-user"></i></span>
+                    <input type="text" placeholder="Usuário" class="admin-login-input" required>
+                </div>
+
+                <div class="admin-login-input-group">
+                    <span class="admin-login-icon"><i class="fa-solid fa-lock"></i></span>
+                    <input type="password" placeholder="Senha" class="admin-login-input" required>
+                </div>
+
+                <button type="submit" class="admin-login-btn">LOGIN</button>
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>
