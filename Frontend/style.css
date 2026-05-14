@@ -1903,6 +1903,105 @@ body {
     background-color: #5c162b;
 }
 
+.admin-login-home-link {
+    position: absolute;
+    top: 4.8rem;
+    right: 5rem;
+    z-index: 20;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: #7A1E3A;
+    font: 800 0.95rem var(--ff-primary, 'Montserrat', sans-serif);
+    text-decoration: none;
+}
+
+.admin-login-home-link:hover {
+    color: #5c162b;
+}
+
+.user-access-card {
+    padding-top: 3rem;
+}
+
+.user-access-card .admin-login-avatar {
+    margin-bottom: 2rem;
+}
+
+.admin-login-flashes {
+    display: grid;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.admin-login-flash {
+    border-radius: 8px;
+    font-weight: 700;
+    padding: 0.75rem 1rem;
+}
+
+.admin-login-flash--success {
+    background: #f0fff6;
+    border: 1px solid #9ad9b6;
+    color: #17633a;
+}
+
+.admin-login-flash--error {
+    background: #fff0f0;
+    border: 1px solid #f2b8b8;
+    color: #8a1f1f;
+}
+
+.user-access-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 2rem 0 1.5rem;
+    color: #7A1E3A;
+    font: 800 0.85rem var(--ff-primary, 'Montserrat', sans-serif);
+    text-transform: uppercase;
+}
+
+.user-access-divider::before,
+.user-access-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(122, 30, 58, 0.25);
+}
+
+@media (max-width: 760px) {
+    .admin-login-logo-box {
+        top: 1.5rem;
+        left: 1.5rem;
+    }
+
+    .admin-login-logo-box img {
+        height: 52px;
+    }
+
+    .admin-login-home-link {
+        top: 1.9rem;
+        right: 1.5rem;
+        font-size: 0.8rem;
+    }
+
+    .admin-login-bg-stripe {
+        left: 0;
+        width: 66%;
+    }
+
+    .admin-login-card-container {
+        left: 50%;
+        width: min(92vw, 380px);
+    }
+
+    .admin-login-card {
+        width: 100%;
+        padding: 3rem 1.5rem 2rem;
+    }
+}
+
 /* === CARRINHO SIDEBAR === */
 .cart-open-body {
     margin: 0;

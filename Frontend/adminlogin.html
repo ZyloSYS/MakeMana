@@ -17,10 +17,17 @@
 
     <!-- Logo -->
     <div class="admin-login-logo-box">
-        <img src="/img/logo-makemana.png" alt="Logo MakeMana">
+        <a href="{{ url_for('index') }}" aria-label="Voltar para home">
+            <img src="/img/logo-makemana.png" alt="Logo MakeMana">
+        </a>
         <h1 class="admin-login-title"><span class="admin-title-red"></span><br><span class="admin-title-black"></span>
         </h1>
     </div>
+
+    <a class="admin-login-home-link" href="{{ url_for('index') }}">
+        <i class="fa-solid fa-arrow-left"></i>
+        Voltar para home
+    </a>
 
     <!-- Login Card -->
     <div class="admin-login-card-container">

@@ -1,48 +1,71 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="pt-br">
 
-{% block title %}Acesso | MakeMana{% endblock %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acesso | MakeMana</title>
+    <link rel="stylesheet" href="/variables.css">
+    <link rel="stylesheet" href="/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
 
-{% block content %}
-<main class="pedido-page pedido-page--center auth-page">
-    <section class="pedido-card auth-card reveal-on-scroll">
-        <img class="confirmacao-logo" src="/img/logo-makemana.png" alt="MakeMana Logo">
-        <span class="pedido-kicker">Acesso da cliente</span>
-        <h1>Entrar ou criar acesso</h1>
-        <p>Use o codigo de acesso para entrar. Para criar um acesso, informe apenas nome de usuario e senha.</p>
+<body class="admin-login-body">
+    <div class="admin-login-bg-stripe"></div>
 
-        {% with messages = get_flashed_messages(with_categories=true) %}
-            {% if messages %}
-                <div class="flash-list">
-                    {% for category, message in messages %}
-                        <p class="flash flash-{{ category }}">{{ message }}</p>
-                    {% endfor %}
+    <div class="admin-login-logo-box">
+        <a href="{{ url_for('index') }}" aria-label="Voltar para home">
+            <img src="/img/logo-makemana.png" alt="Logo MakeMana">
+        </a>
+    </div>
+
+    <a class="admin-login-home-link" href="{{ url_for('index') }}">
+        <i class="fa-solid fa-arrow-left"></i>
+        Voltar para home
+    </a>
+
+    <div class="admin-login-card-container user-access-card-container">
+        <div class="admin-login-card user-access-card">
+            <div class="admin-login-avatar"></div>
+
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    <div class="admin-login-flashes">
+                        {% for category, message in messages %}
+                            <p class="admin-login-flash admin-login-flash--{{ category }}">{{ message }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            <form method="post" class="admin-login-form">
+                <div class="admin-login-input-group">
+                    <span class="admin-login-icon"><i class="fa-solid fa-key"></i></span>
+                    <input type="text" name="codigo" placeholder="Codigo de acesso" class="admin-login-input" autocomplete="one-time-code" required>
                 </div>
-            {% endif %}
-        {% endwith %}
 
-        <form class="pedido-form auth-form" method="post">
-            <label>
-                Codigo de acesso
-                <input type="text" name="codigo" autocomplete="one-time-code" placeholder="MMU-XXXXXXXX" required>
-            </label>
-            <div class="pedido-actions">
-                <button class="admin-primary" type="submit" name="action" value="login">Entrar</button>
-            </div>
-        </form>
+                <button type="submit" name="action" value="login" class="admin-login-btn">LOGIN</button>
+            </form>
 
-        <form class="pedido-form auth-form" method="post">
-            <label>
-                Nome para cadastro
-                <input type="text" name="nome" autocomplete="username" required>
-            </label>
-            <label>
-                Senha para cadastro
-                <input type="password" name="senha" autocomplete="new-password" inputmode="numeric" pattern="[0-9]{6}" minlength="6" maxlength="6" placeholder="6 digitos" required>
-            </label>
-            <div class="pedido-actions">
-                <button class="buy-button" type="submit" name="action" value="register">Criar acesso</button>
+            <div class="user-access-divider">
+                <span>Criar acesso</span>
             </div>
-        </form>
-    </section>
-</main>
-{% endblock %}
+
+            <form method="post" class="admin-login-form">
+                <div class="admin-login-input-group">
+                    <span class="admin-login-icon"><i class="fa-solid fa-user"></i></span>
+                    <input type="text" name="nome" placeholder="Nome de usuario" class="admin-login-input" autocomplete="username" required>
+                </div>
+
+                <div class="admin-login-input-group">
+                    <span class="admin-login-icon"><i class="fa-solid fa-lock"></i></span>
+                    <input type="password" name="senha" placeholder="Senha com 6 digitos" class="admin-login-input" autocomplete="new-password" inputmode="numeric" pattern="[0-9]{6}" minlength="6" maxlength="6" required>
+                </div>
+
+                <button type="submit" name="action" value="register" class="admin-login-btn">CRIAR</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
