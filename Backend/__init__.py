@@ -1,1 +1,1 @@
-"""Backend package for the Make!Mana Flask app."""
+"""Backend package for the MakeMana Flask app."""

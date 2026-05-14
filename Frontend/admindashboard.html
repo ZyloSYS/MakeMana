@@ -122,6 +122,9 @@
                                 <p><strong>Nome:</strong> {{ denuncia.produto_nome or 'Pedido especial' }}</p>
                                 <p><strong>Valor:</strong> {{ denuncia.produto_preco or 'Nao informado' }}</p>
                                 <p><strong>Perfil:</strong> {{ denuncia.usuario.nome if denuncia.usuario else 'Sem login vinculado' }}</p>
+                                {% if denuncia.usuario %}
+                                    <p><strong>Token:</strong> {{ denuncia.usuario.codigo_acesso }}</p>
+                                {% endif %}
                             </div>
                         </div>
                     </div>

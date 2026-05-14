@@ -10,7 +10,7 @@ if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
 from Backend.app import _database_uri, create_app
-from Backend.models import Denuncia, db
+from Backend.models import Denuncia, Usuario, db
 
 
 @pytest.fixture()
@@ -71,10 +71,30 @@ def test_formulario_pedido_cria_registro(client, app):
 def test_usuario_cadastra_envia_e_acompanha_pedido(client, app):
     response = client.post(
         "/login",
-        data={"nome": "Maria", "senha": "1234", "action": "register"},
+        data={"nome": "Maria", "action": "register"},
         follow_redirects=False,
     )
     assert response.status_code == 302
+
+    with app.app_context():
+        usuario = Usuario.query.filter_by(nome="Maria").one()
+        codigo_acesso = usuario.codigo_acesso
+        assert codigo_acesso.startswith("MMU-")
+
+    client.get("/logout")
+    senha_login = client.post(
+        "/login",
+        data={"nome": "Maria", "senha": "1234", "action": "login"},
+        follow_redirects=False,
+    )
+    assert senha_login.status_code == 400
+
+    token_login = client.post(
+        "/login",
+        data={"codigo": codigo_acesso, "action": "login"},
+        follow_redirects=False,
+    )
+    assert token_login.status_code == 302
 
     response = client.post(
         "/pedido",

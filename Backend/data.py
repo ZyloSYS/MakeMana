@@ -127,22 +127,22 @@ PRODUCTS = [
 
 TESTIMONIALS = [
     {
-        "nome": "Cliente Make!Mana?",
+        "nome": "Cliente MakeMana",
         "imagem": "img/img-clientes1-makemana.jpg",
         "texto": "O pedido especial chegou no tempo certo. Foi discreto, simples de acompanhar e me ajudou a manter o controle do meu proprio ritmo.",
     },
     {
-        "nome": "Cliente Make!Mana?",
+        "nome": "Cliente MakeMana",
         "imagem": "img/img-clientes2-makemana.jpg",
         "texto": "Gostei porque pude descrever o que precisava sem pressa. Parece uma compra comum, mas entende quando um detalhe muda tudo.",
     },
     {
-        "nome": "Cliente Make!Mana?",
+        "nome": "Cliente MakeMana",
         "imagem": "img/img-clientes3-makemana.jpg",
         "texto": "Acompanhar o status pelo perfil fez diferenca. Saber que cada etapa estava andando me deixou mais tranquila.",
     },
     {
-        "nome": "Cliente Make!Mana?",
+        "nome": "Cliente MakeMana",
         "imagem": "img/img-clientes4-makemana.jpg",
         "texto": "A navegacao e leve e discreta. Quando precisei mudar de tela rapido, consegui voltar para a rotina sem levantar perguntas.",
     },

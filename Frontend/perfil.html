@@ -1,17 +1,28 @@
 {% extends "base.html" %}
 
-{% block title %}Meu Perfil | Make!Mana?{% endblock %}
+{% block title %}Meu Perfil | MakeMana{% endblock %}
 
 {% block content %}
 <main class="admin-shell profile-shell">
     <section class="profile-hero reveal-on-scroll">
         <div>
             <span>Perfil</span>
-            <h1>Olá, {{ usuario.nome }}</h1>
+            <h1>Ola, {{ usuario.nome }}</h1>
             <p>Acompanhe seus pedidos pelo status, como em uma loja comum.</p>
+            <p>Codigo de acesso: <strong>{{ usuario.codigo_acesso }}</strong></p>
         </div>
         <a class="link-muted" href="{{ url_for('usuario_logout') }}">Sair</a>
     </section>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="flash-list">
+                {% for category, message in messages %}
+                    <p class="flash flash-{{ category }}">{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
 
     <section class="profile-orders reveal-on-scroll">
         {% for denuncia in denuncias %}
@@ -30,7 +41,7 @@
         {% else %}
             <article class="profile-order-card empty-profile">
                 <h2>Nenhum pedido encontrado.</h2>
-                <p>Quando você enviar um pedido logada, ele aparecerá aqui.</p>
+                <p>Quando voce enviar um pedido logada, ele aparecera aqui.</p>
                 <a class="buy-button" href="{{ url_for('produtos') }}">Ver produtos</a>
             </article>
         {% endfor %}

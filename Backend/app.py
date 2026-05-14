@@ -216,31 +216,34 @@ def register_routes(app: Flask) -> None:
     def usuario_login():
         if request.method == "POST":
             nome = request.form.get("nome", "").strip()
-            senha = request.form.get("senha", "")
+            codigo = request.form.get("codigo", "").strip()
             action = request.form.get("action", "login")
-            if not nome or not senha:
-                flash("Informe nome e senha.", "error")
-                return render_template("usuario_login.html"), 400
-            if len(senha) < 4:
-                flash("Use uma senha com pelo menos 4 caracteres.", "error")
-                return render_template("usuario_login.html"), 400
 
-            usuario = Usuario.query.filter(func.lower(Usuario.nome) == nome.lower()).first()
             if action == "register":
-                if usuario:
-                    flash("Esse nome ja existe. Entre com a senha cadastrada.", "error")
+                if not nome:
+                    flash("Informe seu nome para criar o acesso.", "error")
                     return render_template("usuario_login.html"), 400
-                usuario = Usuario(nome=nome)
-                usuario.set_password(senha)
+                usuario = Usuario.query.filter(func.lower(Usuario.nome) == nome.lower()).first()
+                if usuario:
+                    flash("Esse nome ja existe. Entre com o codigo recebido.", "error")
+                    return render_template("usuario_login.html"), 400
+                codigo_acesso = _new_user_token()
+                usuario = Usuario(nome=nome, codigo_acesso=codigo_acesso)
+                usuario.set_password(codigo_acesso)
                 db.session.add(usuario)
                 db.session.commit()
                 session.clear()
                 session["user_id"] = usuario.id
                 session["user_nome"] = usuario.nome
+                flash(f"Seu codigo de acesso e {codigo_acesso}. Guarde esse codigo para entrar novamente.", "success")
                 return redirect(url_for("perfil"))
 
-            if not usuario or not usuario.check_password(senha):
-                flash("Nome ou senha invalidos.", "error")
+            if not codigo:
+                flash("Informe o codigo de acesso.", "error")
+                return render_template("usuario_login.html"), 400
+            usuario = Usuario.query.filter(func.lower(Usuario.codigo_acesso) == codigo.lower()).first()
+            if not usuario or not usuario.check_token(codigo):
+                flash("Codigo de acesso invalido.", "error")
                 return render_template("usuario_login.html"), 400
             session.clear()
             session["user_id"] = usuario.id
@@ -509,6 +512,13 @@ def _new_protocol() -> str:
             return code
 
 
+def _new_user_token() -> str:
+    while True:
+        code = f"MMU-{secrets.token_hex(4).upper()}"
+        if not Usuario.query.filter_by(codigo_acesso=code).first():
+            return code
+
+
 def _valid_admin_credentials(username: str, password: str) -> bool:
     expected_username = os.getenv("ADMIN_USERNAME", "admin")
     password_hash = os.getenv("ADMIN_PASSWORD_HASH")
@@ -544,19 +554,29 @@ def _ensure_sqlite_schema() -> None:
     if uri.drivername != "sqlite":
         return
 
-    existing = {
+    denuncia_columns = {
         row[1]
         for row in db.session.execute(text("PRAGMA table_info(denuncias)")).fetchall()
     }
-    columns = {
+    denuncia_migrations = {
         "produto_id": "ALTER TABLE denuncias ADD COLUMN produto_id VARCHAR(80)",
         "produto_nome": "ALTER TABLE denuncias ADD COLUMN produto_nome VARCHAR(160)",
         "produto_preco": "ALTER TABLE denuncias ADD COLUMN produto_preco VARCHAR(40)",
         "usuario_id": "ALTER TABLE denuncias ADD COLUMN usuario_id INTEGER",
     }
-    for column, statement in columns.items():
-        if column not in existing:
+    for column, statement in denuncia_migrations.items():
+        if column not in denuncia_columns:
             db.session.execute(text(statement))
+
+    usuario_columns = {
+        row[1]
+        for row in db.session.execute(text("PRAGMA table_info(usuarios)")).fetchall()
+    }
+    if "codigo_acesso" not in usuario_columns:
+        db.session.execute(text("ALTER TABLE usuarios ADD COLUMN codigo_acesso VARCHAR(32)"))
+        db.session.flush()
+        for usuario in Usuario.query.all():
+            usuario.codigo_acesso = _new_user_token()
     db.session.commit()
 
 

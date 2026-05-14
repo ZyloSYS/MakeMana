@@ -65,7 +65,8 @@ class Usuario(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     nome = db.Column(db.String(120), unique=True, nullable=False, index=True)
-    senha_hash = db.Column(db.String(255), nullable=False)
+    codigo_acesso = db.Column(db.String(32), unique=True, nullable=False, index=True)
+    senha_hash = db.Column(db.String(255), nullable=True)
     created_at = db.Column(
         db.DateTime(timezone=True),
         nullable=False,
@@ -73,8 +74,13 @@ class Usuario(db.Model):
     )
     denuncias = db.relationship("Denuncia", backref="usuario", lazy=True)
 
+    def check_token(self, token: str) -> bool:
+        return self.codigo_acesso.lower() == token.strip().lower()
+
     def set_password(self, password: str) -> None:
         self.senha_hash = generate_password_hash(password)
 
     def check_password(self, password: str) -> bool:
+        if not self.senha_hash:
+            return False
         return check_password_hash(self.senha_hash, password)

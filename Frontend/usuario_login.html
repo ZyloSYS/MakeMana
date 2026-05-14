@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Acesso | Make!Mana?{% endblock %}
+{% block title %}Acesso | MakeMana{% endblock %}
 
 {% block content %}
 <main class="pedido-page pedido-page--center auth-page">
@@ -8,7 +8,7 @@
         <img class="confirmacao-logo" src="/img/logo-makemana.png" alt="MakeMana Logo">
         <span class="pedido-kicker">Acesso da cliente</span>
         <h1>Entrar ou criar acesso</h1>
-        <p>Use apenas um nome e uma senha para acompanhar seus pedidos com discrição.</p>
+        <p>Cadastre seu nome uma vez e guarde o codigo gerado para acompanhar seus pedidos.</p>
 
         {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
@@ -22,12 +22,12 @@
 
         <form class="pedido-form auth-form" method="post">
             <label>
-                Nome
-                <input type="text" name="nome" autocomplete="username" required>
+                Codigo de acesso
+                <input type="text" name="codigo" autocomplete="one-time-code" placeholder="MMU-XXXXXXXX">
             </label>
             <label>
-                Senha
-                <input type="password" name="senha" autocomplete="current-password" required>
+                Nome para cadastro
+                <input type="text" name="nome" autocomplete="name">
             </label>
             <div class="pedido-actions">
                 <button class="admin-primary" type="submit" name="action" value="login">Entrar</button>

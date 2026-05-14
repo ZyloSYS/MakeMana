@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ denuncia.protocolo }} | Admin Make!Mana?</title>
+    <title>{{ denuncia.protocolo }} | Admin MakeMana</title>
     <link rel="shortcut icon" href="/img/logo-favicon-makemana.png" type="image/x-icon">
     <link rel="stylesheet" href="/style.css">
     <link rel="stylesheet" href="/backend.css">
@@ -50,6 +50,12 @@
                         <dt>Perfil</dt>
                         <dd>{{ denuncia.usuario.nome if denuncia.usuario else 'Sem login vinculado' }}</dd>
                     </div>
+                    {% if denuncia.usuario %}
+                    <div>
+                        <dt>Token</dt>
+                        <dd>{{ denuncia.usuario.codigo_acesso }}</dd>
+                    </div>
+                    {% endif %}
                     <div>
                         <dt>Status</dt>
                         <dd><span class="status-pill status-{{ denuncia.status }}">{{ status_choices[denuncia.status] }}</span></dd>
