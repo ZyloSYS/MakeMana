@@ -34,11 +34,3 @@ Credenciais padrao de desenvolvimento:
 python -m pip install -r Backend\requirements-dev.txt
 python -m pytest
 ```
-
-## Deploy no Render
-
-O arquivo `render.yaml` fica na raiz do projeto. No Render, use Blueprint deploy apontando para este repositorio. O servico instala as dependencias por `requirements.txt` e inicia a aplicacao com:
-
-```bash
-gunicorn Backend.app:app --bind 0.0.0.0:$PORT
-```
