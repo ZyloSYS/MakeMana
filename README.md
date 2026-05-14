@@ -1,8 +1,36 @@
-# AloMana2.0
-Este repositório apresenta o desenvolvimento do Sistema Web Disfarçado de Registro de Ocorrências e Apoio à Mulher, denominado comercialmente Alo!Mana?. O sistema tem como objetivo oferecer um canal seguro, discreto e acessível para que mulheres em situação de violência, assédio, importunação ou risco possam registrar denúncias, solicitar socorro e acompanhar ocorrências, minimizando riscos de exposição.
+# Make!Mana
 
-A proposta do sistema baseia-se no uso de uma interface disfarçada, simulando uma loja de maquiagem, onde ações comuns do usuário representam, na prática, funcionalidades críticas como pedido de ajuda, denúncia anônima e envio de informações de emergência. Essa abordagem visa reduzir a subnotificação de casos e aumentar a segurança da usuária em ambientes de vigilância ou controle pelo agressor.
+Projeto organizado em duas areas principais:
 
-O projeto está sendo desenvolvido utilizando tecnologias web amplamente consolidadas, como HTML, CSS, JavaScript, Bootstrap no front-end, e Java com Spring Boot no back-end, seguindo princípios de segurança, usabilidade e organização arquitetural. O sistema também contempla funcionalidades administrativas para validação, gerenciamento e encaminhamento das denúncias recebidas.
+- `Frontend/`: templates HTML, CSS, JavaScript e imagens.
+- `Backend/`: aplicacao Flask, modelos, dados, testes, dependencias e configuracao de deploy.
 
-Este repositório reúne a documentação, protótipos, diagramas UML e o código-fonte do projeto, servindo como base para fins acadêmicos, sociais e de pesquisa aplicada em tecnologia voltada à proteção da mulher.
+## Como executar localmente
+
+Na raiz do projeto:
+
+```powershell
+python -m venv venv
+venv\Scripts\Activate.ps1
+python -m pip install -r requirements.txt
+python -m flask --app Backend.app run
+```
+
+Depois acesse:
+
+- Site: `http://127.0.0.1:5000/`
+- Carrinho/pedido: `http://127.0.0.1:5000/pedido`
+- Perfil: `http://127.0.0.1:5000/perfil`
+- Admin: `http://127.0.0.1:5000/admin`
+
+Credenciais padrao de desenvolvimento:
+
+- Usuario: `admin`
+- Senha: `admin123`
+
+## Testes
+
+```powershell
+python -m pip install -r Backend\requirements-dev.txt
+python -m pytest
+```

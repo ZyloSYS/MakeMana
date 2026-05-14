@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}Pedido Concluido | Make!Mana?{% endblock %}
+
+{% block content %}
+<main style="min-height: 62vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 60px 20px;">
+    <div style="text-align: center; margin-bottom: 40px; width: 100%; max-width: 800px;">
+        <h1 style="color: #7A1E3A; font-size: 2rem; margin-bottom: 15px; font-weight: bold;">Seu pedido foi recebido com sucesso!</h1>
+        <p style="color: #666; font-size: 1.2rem; margin-bottom: 30px;">{{ protocolo or '#000000' }}</p>
+        <div style="height: 2px; background-color: #ccc; width: 100%;"></div>
+    </div>
+
+    <section style="width: 100%; max-width: 620px;">
+        <div class="titulo-secao titulo-secao--compacto" style="margin-bottom: 34px;">
+            <span style="font-style: italic; font-size: 1.4rem; color: #7A1E3A;">Resumo</span>
+            <h2 style="font-size: 2rem; font-weight: bold; color: #7A1E3A;">do pedido</h2>
+            <div class="linha" style="width: 100px; height: 3px; background-color: #E6B7C1; margin-top: 5px;"></div>
+        </div>
+
+        <div style="display: flex; gap: 20px; align-items: center; margin-bottom: 34px;">
+            {% if product %}
+                <img src="/{{ product.imagem }}" alt="{{ product.nome }}" style="width: 110px; height: 110px; border-radius: 10px; object-fit: cover;">
+                <div style="flex: 1; display: flex; flex-direction: column;">
+                    <h3 style="color: #7A1E3A; font-size: 1.15rem; margin-bottom: 5px; font-weight: bold;">{{ product.nome }}</h3>
+                    <p style="font-weight: bold; font-size: 1.1rem; color: #1a1a1a;">{{ product.preco }}</p>
+                </div>
+            {% else %}
+                <div style="flex: 1;">
+                    <h3 style="color: #7A1E3A; font-size: 1.15rem; margin-bottom: 5px; font-weight: bold;">{{ denuncia.produto_nome if denuncia else 'Pedido especial' }}</h3>
+                    <p style="font-weight: bold; font-size: 1.1rem; color: #1a1a1a;">{{ denuncia.produto_preco if denuncia and denuncia.produto_preco else 'R$ 0,00' }}</p>
+                </div>
+            {% endif %}
+            <span style="display: inline-block; padding: 8px 18px; border: 1px solid #E6B7C1; border-radius: 20px; color: #1a1a1a; font-weight: 500;">01</span>
+        </div>
+
+        <div style="border-top: 1px solid #eee; padding: 20px 0; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-weight: 500; font-size: 1.2rem; color: #1a1a1a;">Status</span>
+            <span class="status-pill status-{{ denuncia.status if denuncia else 'recebido' }}">{{ status_choices[denuncia.status] if denuncia else 'Recebido' }}</span>
+        </div>
+
+        <div class="pedido-actions" style="justify-content: center;">
+            {% if current_user %}
+                <a class="buy-button" href="{{ url_for('perfil') }}">Acompanhar pedido</a>
+            {% else %}
+                <a class="buy-button" href="{{ url_for('usuario_login') }}">Criar acesso</a>
+            {% endif %}
+            <a class="link-muted" href="{{ url_for('produtos') }}">Continuar comprando</a>
+        </div>
+    </section>
+</main>
+{% endblock %}

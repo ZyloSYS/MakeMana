@@ -425,7 +425,7 @@
 
 
 /***** LOGO *****/
-.logo-alomana {
+.logo-makemana {
     height: 6rem;
     object-fit: contain;
     /* Mantém a proporção da logo quando diminuida */
@@ -629,23 +629,23 @@ input:checked+.slider:before {
 }
 
 .card-labios {
-    background-image: url('img/img-categorias-labios-alomana.jpg');
+    background-image: url('img/img-categorias-labios-makemana.jpg');
 }
 
 .card-skincare {
-    background-image: url('img/img-categorias-skincare-alomana.jpg');
+    background-image: url('img/img-categorias-skincare-makemana.jpg');
 }
 
 .card-face {
-    background-image: url('img/img-categorias-face-alomana.jpg');
+    background-image: url('img/img-categorias-face-makemana.jpg');
 }
 
 .card-acessorios {
-    background-image: url('img/img-categorias-acessorios-alomana.jpg');
+    background-image: url('img/img-categorias-acessorios-makemana.jpg');
 }
 
 .card-olhos {
-    background-image: url('img/img-categorias-olhos-alomana.jpg');
+    background-image: url('img/img-categorias-olhos-makemana.jpg');
 }
 
 .category-label {

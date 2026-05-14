@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}Meu Perfil | Make!Mana?{% endblock %}
+
+{% block content %}
+<main class="admin-shell profile-shell">
+    <section class="profile-hero reveal-on-scroll">
+        <div>
+            <span>Perfil</span>
+            <h1>Olá, {{ usuario.nome }}</h1>
+            <p>Acompanhe seus pedidos pelo status, como em uma loja comum.</p>
+        </div>
+        <a class="link-muted" href="{{ url_for('usuario_logout') }}">Sair</a>
+    </section>
+
+    <section class="profile-orders reveal-on-scroll">
+        {% for denuncia in denuncias %}
+            <article class="profile-order-card">
+                <div>
+                    <span class="pedido-kicker">{{ denuncia.protocolo }}</span>
+                    <h2>{{ denuncia.produto_nome or 'Pedido especial' }}</h2>
+                    <p>{{ denuncia.created_at.strftime('%d/%m/%Y %H:%M') }}</p>
+                </div>
+                <div class="status-timeline" data-current-status="{{ denuncia.status }}">
+                    {% for status, label in status_choices.items() %}
+                        <span class="timeline-step {% if status == denuncia.status %}is-current{% endif %}">{{ label }}</span>
+                    {% endfor %}
+                </div>
+            </article>
+        {% else %}
+            <article class="profile-order-card empty-profile">
+                <h2>Nenhum pedido encontrado.</h2>
+                <p>Quando você enviar um pedido logada, ele aparecerá aqui.</p>
+                <a class="buy-button" href="{{ url_for('produtos') }}">Ver produtos</a>
+            </article>
+        {% endfor %}
+    </section>
+</main>
+{% endblock %}

@@ -4,8 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alo! Mana? - Admin Login</title>
-    <link rel="stylesheet" href="style.css">
+    <title>MakeMana - Admin Login</title>
+    <link rel="stylesheet" href="/variables.css">
+    <link rel="stylesheet" href="/style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 
@@ -16,7 +17,7 @@
 
     <!-- Logo -->
     <div class="admin-login-logo-box">
-        <img src="img/logo-alomana.png" alt="Logo Alo! Mana?">
+        <img src="/img/logo-makemana.png" alt="Logo MakeMana">
         <h1 class="admin-login-title"><span class="admin-title-red"></span><br><span class="admin-title-black"></span>
         </h1>
     </div>
@@ -26,15 +27,25 @@
         <div class="admin-login-card">
             <div class="admin-login-avatar"></div>
 
-            <form action="admindashboard.html" class="admin-login-form">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    <div style="margin-bottom: 1rem;">
+                        {% for category, message in messages %}
+                            <p style="background: #fff0f0; border: 1px solid #f2b8b8; border-radius: 8px; color: #8a1f1f; font-weight: 700; padding: 0.75rem 1rem;">{{ message }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            <form action="{{ url_for('admin_login') }}" method="post" class="admin-login-form">
                 <div class="admin-login-input-group">
                     <span class="admin-login-icon"><i class="fa-solid fa-user"></i></span>
-                    <input type="text" placeholder="Usuário" class="admin-login-input" required>
+                    <input type="text" name="username" placeholder="Usuário" class="admin-login-input" autocomplete="username" required>
                 </div>
 
                 <div class="admin-login-input-group">
                     <span class="admin-login-icon"><i class="fa-solid fa-lock"></i></span>
-                    <input type="password" placeholder="Senha" class="admin-login-input" required>
+                    <input type="password" name="password" placeholder="Senha" class="admin-login-input" autocomplete="current-password" required>
                 </div>
 
                 <button type="submit" class="admin-login-btn">LOGIN</button>

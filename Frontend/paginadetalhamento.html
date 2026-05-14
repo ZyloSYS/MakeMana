@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block title %}{{ product.nome }} | Make!Mana?{% endblock %}
+
+{% block content %}
+<main class="detalhamento-container" style="max-width: 1200px; margin: 40px auto; padding: 0 20px;">
+    <div class="produto-detalhe-grid" style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(320px, 1fr); gap: 40px; margin-bottom: 60px;">
+        <div class="produto-imagem-container" style="position: relative;">
+            <img src="/{{ product.imagem }}" alt="{{ product.nome }}" style="width: 100%; border-radius: 8px; display: block; object-fit: cover;">
+            <div class="carousel-dots" style="position: absolute; bottom: 15px; left: 15px; display: flex; gap: 5px;">
+                <span style="width: 8px; height: 8px; border-radius: 50%; background-color: #E6B7C1;"></span>
+                <span style="width: 8px; height: 8px; border-radius: 50%; background-color: #E0E0E0;"></span>
+                <span style="width: 8px; height: 8px; border-radius: 50%; background-color: #E0E0E0;"></span>
+            </div>
+        </div>
+
+        <section class="produto-info-container" style="color: #1a1a1a;">
+            <span class="pedido-kicker">{{ product.categoria }}</span>
+            <h1 style="color: #7A1E3A; font-size: 2rem; margin: 8px 0 10px;">{{ product.nome }}</h1>
+
+            <div class="produto-preco" style="margin-bottom: 25px;">
+                <span style="font-size: 1.8rem; font-weight: bold;">{{ product.preco }}</span>
+                <span style="font-size: 0.9rem; margin-left: 10px;">{{ product.parcelamento }}</span>
+            </div>
+
+            <p style="margin-bottom: 22px; line-height: 1.6;">{{ product.descricao }}</p>
+
+            <ul style="list-style: none; padding: 0; margin-bottom: 30px; display: grid; gap: 12px;">
+                <li>Entrega discreta e acompanhamento por status.</li>
+                <li>Pedido guardado no perfil quando a cliente estiver logada.</li>
+                <li>Opcao de prioridade para dias que pedem mais cuidado.</li>
+            </ul>
+
+            <div class="variante-box" style="background-color: #F4EFE3; padding: 25px; border-radius: 20px;">
+                <p style="margin-bottom: 15px;">Selecione uma variante:</p>
+                <div class="variante-colors" style="display: flex; gap: 10px; margin-bottom: 25px;">
+                    <span style="width: 30px; height: 30px; border-radius: 50%; background-color: #79C171;"></span>
+                    <span style="width: 30px; height: 30px; border-radius: 50%; background-color: #E3D1FA;"></span>
+                    <span style="width: 30px; height: 30px; border-radius: 50%; background-color: #FEF76C;"></span>
+                    <span style="width: 30px; height: 30px; border-radius: 50%; background-color: #FADFDE;"></span>
+                </div>
+
+                <div class="acoes-compra" style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap;">
+                    <span style="display: inline-flex; align-items: center; justify-content: center; min-width: 80px; border: 1px solid #E0E0E0; border-radius: 20px; padding: 10px 15px; background: #fff;">01</span>
+                    <button class="botao" type="button"
+                        data-add-cart
+                        data-id="{{ product.id }}"
+                        data-name="{{ product.nome }}"
+                        data-price="{{ product.preco }}"
+                        data-image="/{{ product.imagem }}"
+                        data-url="{{ url_for('pedido', produto=product.id) }}">Adicionar ao carrinho</button>
+                    <a class="buy-button" href="{{ url_for('pedido', produto=product.id) }}">Concluir pedido</a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <section class="tabs-container" style="margin-bottom: 40px;">
+        <div class="tabs-header" style="display: flex; justify-content: center; gap: 20px; margin-bottom: 30px; flex-wrap: wrap;">
+            <button type="button" style="padding: 10px 40px; border-radius: 25px; border: none; background-color: #E6B7C1; color: #1a1a1a; font-weight: bold; font-size: 1.1rem;">Descricao</button>
+            <button type="button" style="padding: 10px 40px; border-radius: 25px; border: 1px solid #7A1E3A; background-color: #ffffff; color: #7A1E3A; font-weight: bold; font-size: 1.1rem;">Como usar</button>
+            <button type="button" style="padding: 10px 40px; border-radius: 25px; border: 1px solid #7A1E3A; background-color: #ffffff; color: #7A1E3A; font-weight: bold; font-size: 1.1rem;">Composicao</button>
+        </div>
+
+        <div class="tab-content" style="max-width: 900px; margin: 0 auto; text-align: justify; line-height: 1.6;">
+            <p>{{ product.descricao }} O fluxo de compra mantem a aparencia comum de loja e guarda apenas os detalhes necessarios para acompanhar cada etapa.</p>
+        </div>
+    </section>
+</main>
+{% endblock %}

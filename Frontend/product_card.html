@@ -1,0 +1,29 @@
+<article class="product-card product-filter-card reveal-on-scroll"
+    data-name="{{ product.nome|lower }}"
+    data-search="{{ (product.nome ~ ' ' ~ product.descricao ~ ' ' ~ product.categoria ~ ' ' ~ product.linha)|lower }}"
+    data-category="{{ product.categoria }}"
+    data-line="{{ product.linha }}"
+    data-price="{{ product.preco|replace('R$ ', '')|replace('.', '')|replace(',', '.') }}">
+    <img src="/{{ product.imagem }}" alt="{{ product.nome }}" class="product-image">
+    <div class="product-info">
+        <div>
+            <span class="product-tag">{{ category_labels.get(product.categoria, product.categoria)|upper }}</span>
+            <h3 class="product-title">{{ product.nome }}</h3>
+            <p class="product-description">{{ product.descricao }}</p>
+        </div>
+        <div class="product-footer">
+            <div class="price-box">
+                <span class="price-value">{{ product.preco }}</span>
+                <span class="price-installments">{{ product.parcelamento }}</span>
+            </div>
+            <button class="buy-button add-to-cart"
+                type="button"
+                data-add-cart
+                data-id="{{ product.id }}"
+                data-name="{{ product.nome }}"
+                data-price="{{ product.preco }}"
+                data-image="/{{ product.imagem }}"
+                data-url="{{ url_for('pedido', produto=product.id) }}">Comprar</button>
+        </div>
+    </div>
+</article>

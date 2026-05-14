@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}Acesso | Make!Mana?{% endblock %}
+
+{% block content %}
+<main class="pedido-page pedido-page--center auth-page">
+    <section class="pedido-card auth-card reveal-on-scroll">
+        <img class="confirmacao-logo" src="/img/logo-makemana.png" alt="MakeMana Logo">
+        <span class="pedido-kicker">Acesso da cliente</span>
+        <h1>Entrar ou criar acesso</h1>
+        <p>Use apenas um nome e uma senha para acompanhar seus pedidos com discrição.</p>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="flash-list">
+                    {% for category, message in messages %}
+                        <p class="flash flash-{{ category }}">{{ message }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <form class="pedido-form auth-form" method="post">
+            <label>
+                Nome
+                <input type="text" name="nome" autocomplete="username" required>
+            </label>
+            <label>
+                Senha
+                <input type="password" name="senha" autocomplete="current-password" required>
+            </label>
+            <div class="pedido-actions">
+                <button class="admin-primary" type="submit" name="action" value="login">Entrar</button>
+                <button class="buy-button" type="submit" name="action" value="register">Criar acesso</button>
+            </div>
+        </form>
+    </section>
+</main>
+{% endblock %}

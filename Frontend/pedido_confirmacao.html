@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Pedido Recebido | Make!Mana?{% endblock %}
+
+{% block content %}
+<main class="pedido-page pedido-page--center">
+    <section class="pedido-card confirmacao-card reveal-on-scroll">
+        <img class="confirmacao-logo" src="/img/logo-makemana.png" alt="MakeMana Logo">
+        <span class="pedido-kicker">Pedido recebido</span>
+        <h1>Tudo certo por aqui.</h1>
+        {% if protocolo %}
+            <p>Protocolo: <strong>{{ protocolo }}</strong></p>
+        {% endif %}
+        <div class="pedido-actions">
+            {% if current_user %}
+                <a class="buy-button" href="{{ url_for('perfil') }}">Acompanhar pedido</a>
+            {% else %}
+                <a class="buy-button" href="{{ url_for('usuario_login') }}">Criar acesso</a>
+            {% endif %}
+            <a class="link-muted" href="{{ url_for('produtos') }}">Continuar comprando</a>
+        </div>
+    </section>
+</main>
+{% endblock %}

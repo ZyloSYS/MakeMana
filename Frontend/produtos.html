@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }} | Make!Mana?{% endblock %}
+
+{% block content %}
+<main class="produtos-page-container catalog-page">
+    <aside class="sidebar-filtros reveal-on-scroll">
+        <div class="title-container">
+            <h1 class="h1-title">{{ title }}</h1>
+            <h2 class="h2-subtitle">{{ subtitle }}</h2>
+        </div>
+
+        <form class="filtros-container" data-product-filters>
+            <details class="filtro-grupo" open>
+                <summary class="filtro-header">Sinais</summary>
+                <ul class="filtro-lista">
+                    <li class="filtro-item-opcao"><label><input type="checkbox" name="categoria" value="acessorios"> Pontos de apoio</label></li>
+                    <li class="filtro-item-opcao"><label><input type="checkbox" name="categoria" value="face"> Cobertura segura</label></li>
+                    <li class="filtro-item-opcao"><label><input type="checkbox" name="categoria" value="labios"> Sinal suave</label></li>
+                    <li class="filtro-item-opcao"><label><input type="checkbox" name="categoria" value="olhos"> Olhar atento</label></li>
+                    <li class="filtro-item-opcao"><label><input type="checkbox" name="categoria" value="skincare"> Camada calma</label></li>
+                    <li class="filtro-item-opcao"><label><input type="checkbox" name="categoria" value="kits"> Planos discretos</label></li>
+                </ul>
+            </details>
+
+            <details class="filtro-grupo" open>
+                <summary class="filtro-header">Preco</summary>
+                <ul class="filtro-lista">
+                    <li class="filtro-item-opcao"><label><input type="radio" name="preco" value="" checked> Todos</label></li>
+                    <li class="filtro-item-opcao"><label><input type="radio" name="preco" value="50"> Ate R$ 50</label></li>
+                    <li class="filtro-item-opcao"><label><input type="radio" name="preco" value="100"> Ate R$ 100</label></li>
+                    <li class="filtro-item-opcao"><label><input type="radio" name="preco" value="200"> Ate R$ 200</label></li>
+                </ul>
+            </details>
+        </form>
+    </aside>
+
+    <section class="produtos-vitrine">
+        <div class="vitrine-header reveal-on-scroll">
+            <span class="contagem"><span data-product-count>{{ products|length }}</span> produtos</span>
+            <div class="ordenacao-dropdown">
+                <select class="select-customizado" data-sort-products>
+                    <option value="popular">Mais Vendidos</option>
+                    <option value="menor-preco">Menor Preco</option>
+                    <option value="maior-preco">Maior Preco</option>
+                    <option value="az">A-Z</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="products-grid dynamic-product-grid" data-products-grid>
+            {% for product in products %}
+                {% include "product_card.html" %}
+            {% endfor %}
+        </div>
+
+        <p class="empty-state catalog-empty" data-products-empty>Nenhum produto combina com esses filtros.</p>
+    </section>
+</main>
+{% endblock %}

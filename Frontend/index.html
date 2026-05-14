@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block title %}Make!Mana? | Inicio{% endblock %}
+
+{% block content %}
+<main>
+    <section id="banner-container" class="home-hero reveal-on-scroll">
+        <img src="/img/banner-homepage.jpg" alt="Make!Mana? - Banner da homepage do site">
+    </section>
+
+    <section class="categorias-container reveal-on-scroll">
+        <div class="title-container">
+            <h1 class="h1-title">Sinais</h1>
+            <h2 class="h2-subtitle">Nossos</h2>
+        </div>
+        <div class="categories-grid">
+            <a href="{{ url_for('maquiagem') }}?categoria=labios" class="category-card card-labios"><p class="category-label">SINAL SUAVE</p></a>
+            <a href="{{ url_for('skincare') }}" class="category-card card-skincare"><p class="category-label">CAMADA CALMA</p></a>
+            <a href="{{ url_for('produtos') }}?categoria=face" class="category-card card-face"><p class="category-label">COBERTURA SEGURA</p></a>
+            <a href="{{ url_for('kits') }}" class="category-card card-acessorios"><p class="category-label">PONTOS DE APOIO</p></a>
+            <a href="{{ url_for('maquiagem') }}?categoria=olhos" class="category-card card-olhos"><p class="category-label">OLHAR ATENTO</p></a>
+        </div>
+    </section>
+
+    <section class="favorite-container reveal-on-scroll">
+        <div class="title-container">
+            <h1 class="h1-title">Clientes</h1>
+            <h2 class="h2-subtitle">Favoritos dos</h2>
+        </div>
+
+        <div class="products-grid dynamic-product-grid">
+            {% for product in products %}
+                {% include "product_card.html" %}
+            {% endfor %}
+        </div>
+    </section>
+
+    <section class="depoimentos-container reveal-on-scroll">
+        <div class="title-container">
+            <h1 class="h1-title">Experiencias</h1>
+            <h2 class="h2-subtitle">Das clientes</h2>
+        </div>
+
+        <div class="depoimentos-wrapper">
+            <div class="depoimentos-grid testimonial-marquee">
+                {% for testimonial in testimonials %}
+                    <article class="testemunho-card">
+                        <div class="quote-area">
+                            <span class="aspas">"</span>
+                            <p class="texto-depoimento">{{ testimonial.texto }}</p>
+                        </div>
+                        <div class="cliente-info">
+                            <img src="/{{ testimonial.imagem }}" alt="Foto ilustrativa" class="foto-perfil">
+                            <h3 class="nome-cliente">{{ testimonial.nome }}</h3>
+                        </div>
+                    </article>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}

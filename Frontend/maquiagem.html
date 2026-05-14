@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maquiagem | Make!Mana?</title>
+    <link rel="shortcut icon" href="img/logo-favicon-makemana.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="variables.css">
+</head>
+
+<body>
+    <header class="main-header">
+        <div class="header-container">
+            <div class="search-wrapper">
+                <div class="search-container">
+                    <input type="text" placeholder="Busque por batom, blush, base...">
+                    <svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg" class="icon-search">
+                        <path d="M16.6 18L10.3 11.7C9.8 12.1 9.225 12.4167 8.575 12.65C7.925 12.8833 7.23333 13 6.5 13C4.68333 13 3.14583 12.3708 1.8875 11.1125C0.629167 9.85417 0 8.31667 0 6.5C0 4.68333 0.629167 3.14583 1.8875 1.8875C3.14583 0.629167 4.68333 0 6.5 0C8.31667 0 9.85417 0.629167 11.1125 1.8875C12.3708 3.14583 13 4.68333 13 6.5C13 7.23333 12.8833 7.925 12.65 8.575C12.4167 9.225 12.1 9.8 11.7 10.3L18 16.6L16.6 18ZM6.5 11C7.75 11 8.8125 10.5625 9.6875 9.6875C10.5625 8.8125 11 7.75 11 6.5C11 5.25 10.5625 4.1875 9.6875 3.3125C8.8125 2.4375 7.75 2 6.5 2C5.25 2 4.1875 2.4375 3.3125 3.3125C2.4375 4.1875 2 5.25 2 6.5C2 7.75 2.4375 8.8125 3.3125 9.6875C4.1875 10.5625 5.25 11 6.5 11Z" fill="currentColor" />
+                    </svg>
+                </div>
+            </div>
+
+            <a href="{{ url_for('index') }}"><img class="logo-makemana" src="img/logo-makemana.png" alt="MakeMana Logo"></a>
+
+            <div class="header-actions">
+                <div class="dark-mode-wrapper">
+                    <label class="switch">
+                        <input type="checkbox">
+                        <span class="slider"></span>
+                    </label>
+                    <span class="dark-mode-text">Dark-Mode</span>
+                </div>
+                <a href="{{ url_for('pedido') }}" aria-label="Carrinho">
+                    <svg viewBox="0 0 54 54" xmlns="http://www.w3.org/2000/svg" class="icon-cart">
+                        <path d="M16 53.33c-1.47 0-2.72-.52-3.77-1.57-1.04-1.04-1.56-2.3-1.56-3.76s.52-2.72 1.56-3.77c1.05-1.04 2.3-1.57 3.77-1.57s2.72.53 3.77 1.57c1.04 1.05 1.56 2.3 1.56 3.77s-.52 2.72-1.56 3.77c-1.05 1.05-2.3 1.57-3.77 1.57zm26.67 0c-1.47 0-2.72-.52-3.77-1.57-1.04-1.04-1.56-2.3-1.56-3.76s.52-2.72 1.56-3.77c1.05-1.04 2.3-1.57 3.77-1.57s2.72.53 3.77 1.57c1.04 1.05 1.56 2.3 1.56 3.77s-.52 2.72-1.56 3.77c-1.05 1.05-2.3 1.57-3.77 1.57zM13.73 10.67l6.4 13.33H38.8l7.33-13.33H13.73zM11.2 5.33h39.33c1.03 0 1.8.46 2.34 1.37.53.9.55 1.83.06 2.76l-9.46 17.07c-.49.89-1.15 1.58-1.97 2.07-.82.49-1.72.73-2.7.73H18.93l-2.93 5.34H48V40H16c-2 0-3.51-.88-4.53-2.63-1.02-1.76-1.07-3.5-.13-5.24l3.6-6.53L5.33 5.33H0V0h8.67l2.53 5.33z" fill="currentColor" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <nav class="main-nav">
+        <ul class="nav-list">
+            <li><a href="{{ url_for('produtos') }}" class="nav-link">TODOS OS SINAIS</a></li>
+            <li><a href="{{ url_for('kits') }}" class="nav-link">KITS</a></li>
+            <li><a href="{{ url_for('skincare') }}" class="nav-link">CAMADAS CALMAS</a></li>
+            <li><a href="{{ url_for('maquiagem') }}" class="nav-link">LINHA DE SINAIS</a></li>
+            <li><a href="{{ url_for('institucional') }}" class="nav-link">INSTITUCIONAL</a></li>
+        </ul>
+    </nav>
+
+    <main class="produtos-page-container">
+        <aside class="sidebar-filtros">
+            <div class="title-container">
+                <h1 class="h1-title">Maquiagem</h1>
+                <h2 class="h2-subtitle">Linha</h2>
+            </div>
+        </aside>
+
+        <section class="produtos-vitrine">
+            <div class="vitrine-header">
+                <span class="contagem">4 produtos</span>
+                <div class="ordenacao-dropdown">
+                    <select class="select-customizado">
+                        <option>Mais Vendidos</option>
+                        <option>Menor Preco</option>
+                        <option>Maior Preco</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="products-grid">
+                <article class="product-card">
+                    <img src="img/img-produtos-base-makemana.jpg" alt="Base Liquida Fluid" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-title">Base Liquida Fluid | Segunda Pele</h3>
+                        <p class="product-description">Uma camada firme entre voce e o mundo, com leveza para seguir.</p>
+                        <div class="product-footer">
+                            <div class="price-box">
+                                <span class="price-value">R$ 98,90</span>
+                                <span class="price-installments">ou em 2x de R$ 49,45</span>
+                            </div>
+                            <a class="buy-button" href="{{ url_for('pedido') }}">Comprar</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <img src="img/img-produtos-corretivos-makemana.jpg" alt="Corretivo Colorido" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-title">Corretivo Colorido | Sinais Leves</h3>
+                        <p class="product-description">Suaviza sinais recentes e devolve acabamento tranquilo.</p>
+                        <div class="product-footer">
+                            <div class="price-box">
+                                <span class="price-value">R$ 59,90</span>
+                                <span class="price-installments">ou em 2x de R$ 29,95</span>
+                            </div>
+                            <a class="buy-button" href="{{ url_for('pedido') }}">Comprar</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <img src="img/img-produtos-paletaDeSombra-makemana.jpg" alt="Paleta de Sombras" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-title">Paleta de Sombras | Bastidores</h3>
+                        <p class="product-description">Tons para ler o ambiente e mudar de plano com delicadeza.</p>
+                        <div class="product-footer">
+                            <div class="price-box">
+                                <span class="price-value">R$ 119,90</span>
+                                <span class="price-installments">ou em 2x de R$ 59,95</span>
+                            </div>
+                            <a class="buy-button" href="{{ url_for('pedido') }}">Comprar</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <img src="img/img-produtos-rimel-makemana.jpg" alt="Mascara de Cilios" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-title">Mascara de Cilios | Olhar Firme</h3>
+                        <p class="product-description">Definicao resistente para quando o olhar precisa dizer mais.</p>
+                        <div class="product-footer">
+                            <div class="price-box">
+                                <span class="price-value">R$ 64,90</span>
+                                <span class="price-installments">ou em 2x de R$ 32,45</span>
+                            </div>
+                            <a class="buy-button" href="{{ url_for('pedido') }}">Comprar</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-grid">
+            <div class="footer-logo">
+                <img src="img/IFB-logo.png" alt="Logo IFB">
+            </div>
+            <div class="footer-info">
+                <p class="copyright">&copy; 2026 - Make!Mana?<br>Projeto academico</p>
+                <p class="instituicao">Instituto Federal de Brasilia - IFB</p>
+            </div>
+            <div class="footer-spacer"></div>
+        </div>
+    </footer>
+</body>
+</html>

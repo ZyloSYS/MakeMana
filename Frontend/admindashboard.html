@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MakeMana - Painel de Admin</title>
+    <link rel="stylesheet" href="/variables.css">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/backend.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body class="admin-body">
+    <header class="admin-header">
+        <div class="admin-header__logo">
+            <img src="/img/logo-makemana.png" alt="Logo MakeMana" class="admin-logo-img">
+            <h1 class="admin-header__title"><span class="admin-title-red">Painel de </span><span class="admin-title-black">Admin</span></h1>
+        </div>
+        <div class="admin-header__user">
+            <a class="admin-user-pill" href="{{ url_for('admin_logout') }}" style="text-decoration: none;">
+                <div class="admin-user-avatar"></div>
+                <span class="admin-user-name">Ola, {{ session.get('admin_username', 'admin') }}</span>
+                <i class="fa-solid fa-arrow-right-from-bracket admin-user-icon"></i>
+            </a>
+        </div>
+    </header>
+
+    <div class="admin-layout">
+        <aside class="admin-sidebar">
+            <nav class="admin-nav">
+                <a href="{{ url_for('admin_dashboard') }}" class="admin-nav__link admin-nav__link--active">
+                    <i class="fa-solid fa-table-cells-large"></i> Dashboard
+                </a>
+                <a href="{{ url_for('admin_dashboard') }}#registros" class="admin-nav__link">
+                    <i class="fa-regular fa-file-lines"></i> Denuncias
+                </a>
+                <a href="{{ url_for('index') }}" class="admin-nav__link">
+                    <i class="fa-solid fa-store"></i> Site
+                </a>
+                <a href="{{ url_for('admin_logout') }}" class="admin-nav__link">
+                    <i class="fa-solid fa-gear"></i> Sair
+                </a>
+            </nav>
+        </aside>
+
+        <main class="admin-main">
+            <div class="admin-main__header">
+                <div class="admin-main__title-box">
+                    <h2 class="admin-main__title">Pedidos recebidos</h2>
+                    <p class="admin-main__subtitle">{{ stats.total }} registros no sistema, {{ stats.urgentes }} marcados como urgentes.</p>
+                </div>
+                <div class="admin-main__actions">
+                    <div class="admin-notification">
+                        <i class="fa-regular fa-bell"></i>
+                        {% if stats.recebido %}<span class="admin-notification-dot"></span>{% endif %}
+                    </div>
+                    <i class="fa-solid fa-gear admin-settings-icon"></i>
+                </div>
+            </div>
+
+            <div class="admin-summary">
+                <div class="admin-summary__card">
+                    <span class="admin-summary__label">Recebidos</span>
+                    <span class="admin-summary__value">{{ stats.recebido }}</span>
+                </div>
+                <div class="admin-summary__card">
+                    <span class="admin-summary__label">Em producao</span>
+                    <span class="admin-summary__value">{{ stats.em_producao }}</span>
+                </div>
+                <div class="admin-summary__card">
+                    <span class="admin-summary__label">Finalizados</span>
+                    <span class="admin-summary__value">{{ stats.finalizado }}</span>
+                </div>
+                <div class="admin-summary__card">
+                    <span class="admin-summary__label">Urgentes</span>
+                    <span class="admin-summary__value">{{ stats.urgentes }}</span>
+                </div>
+            </div>
+
+            <section id="registros" class="admin-panel" style="margin-bottom: 1.5rem;">
+                <div class="admin-panel__header">
+                    <h3 class="admin-panel__title">Filtro de registros</h3>
+                    <p class="admin-panel__subtitle">Busque por protocolo, produto, local, contato ou descricao.</p>
+                </div>
+                <div class="admin-panel__body" style="display: block;">
+                    <form method="get" action="{{ url_for('admin_dashboard') }}" style="display: grid; grid-template-columns: minmax(220px, 1fr) minmax(160px, 220px) auto; gap: 12px;">
+                        <input type="search" name="q" value="{{ query_text }}" placeholder="Buscar" style="padding: 12px; border: 1px solid #ccc; border-radius: 8px;">
+                        <select name="status" style="padding: 12px; border: 1px solid #ccc; border-radius: 8px;">
+                            <option value="">Todos os status</option>
+                            {% for status, label in status_choices.items() %}
+                                <option value="{{ status }}" {% if status_filter == status %}selected{% endif %}>{{ label }}</option>
+                            {% endfor %}
+                        </select>
+                        <button class="admin-login-btn" type="submit" style="margin: 0; border-radius: 8px;">Filtrar</button>
+                    </form>
+                </div>
+            </section>
+
+            {% for denuncia in denuncias %}
+                <section class="admin-panel" style="margin-bottom: 1rem;">
+                    <div class="admin-panel__header">
+                        <h3 class="admin-panel__title">{{ denuncia.protocolo }}</h3>
+                        <p class="admin-panel__subtitle">Recebida em: {{ denuncia.created_at.strftime('%d/%m/%Y %H:%M') }}</p>
+                    </div>
+                    <div class="admin-panel__body">
+                        <div class="admin-panel__box admin-panel__box--left">
+                            <h4 class="admin-panel__box-title">Detalhes da denuncia</h4>
+                            <div class="admin-panel__box-content">
+                                <p><strong>Status:</strong> <span class="status-pill status-{{ denuncia.status }}">{{ status_choices[denuncia.status] }}</span></p>
+                                <p><strong>Urgencia:</strong> {% if denuncia.pedido_urgente %}<span class="urgent-pill">Urgente</span>{% else %}Normal{% endif %}</p>
+                                <p><strong>Nome:</strong> {{ denuncia.nome or 'Nao informado' }}</p>
+                                <p><strong>Contato:</strong> {{ denuncia.contato or 'Nao informado' }}</p>
+                                <p><strong>Local:</strong> {{ denuncia.local_ocorrencia or 'Nao informado' }}</p>
+                                <p><strong>Descricao:</strong> {{ denuncia.descricao[:180] }}{% if denuncia.descricao|length > 180 %}...{% endif %}</p>
+                                <p><a class="admin-link" href="{{ url_for('admin_denuncia_detail', denuncia_id=denuncia.id) }}">Abrir triagem</a></p>
+                            </div>
+                        </div>
+                        <div class="admin-panel__box admin-panel__box--right">
+                            <h4 class="admin-panel__box-title">Produto</h4>
+                            <div class="admin-panel__box-content">
+                                <p><strong>Nome:</strong> {{ denuncia.produto_nome or 'Pedido especial' }}</p>
+                                <p><strong>Valor:</strong> {{ denuncia.produto_preco or 'Nao informado' }}</p>
+                                <p><strong>Perfil:</strong> {{ denuncia.usuario.nome if denuncia.usuario else 'Sem login vinculado' }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            {% else %}
+                <section class="admin-panel">
+                    <div class="admin-panel__header">
+                        <h3 class="admin-panel__title">Nenhum registro encontrado</h3>
+                        <p class="admin-panel__subtitle">Os pedidos enviados pelo checkout aparecerao aqui.</p>
+                    </div>
+                </section>
+            {% endfor %}
+        </main>
+    </div>
+</body>
+
+</html>

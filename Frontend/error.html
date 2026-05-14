@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ code }} | Make!Mana?</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/backend.css">
+    <link rel="stylesheet" href="/variables.css">
+</head>
+
+<body>
+    <main class="pedido-page pedido-page--center">
+        <section class="pedido-card confirmacao-card">
+            <img class="confirmacao-logo" src="/img/logo-makemana.png" alt="MakeMana Logo">
+            <span class="pedido-kicker">Erro {{ code }}</span>
+            <h1>{{ message }}</h1>
+            <div class="pedido-actions">
+                <a class="buy-button" href="{{ url_for('index') }}">Voltar ao inicio</a>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Make!Mana?{% endblock %}</title>
+    <link rel="shortcut icon" href="/img/logo-favicon-makemana.png" type="image/x-icon">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/backend.css">
+    <link rel="stylesheet" href="/variables.css">
+</head>
+
+<body>
+    <header class="main-header site-header">
+        <div class="header-container">
+            <form class="search-wrapper" action="{{ url_for('produtos') }}" method="get">
+                <div class="search-container">
+                    <input class="site-search" type="search" name="q" value="{{ search_query }}" placeholder="Busque por batom, blush, base...">
+                    <button class="search-submit" type="submit" aria-label="Buscar">
+                        <svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg" class="icon-search">
+                            <path d="M16.6 18L10.3 11.7C9.8 12.1 9.225 12.4167 8.575 12.65C7.925 12.8833 7.23333 13 6.5 13C4.68333 13 3.14583 12.3708 1.8875 11.1125C0.629167 9.85417 0 8.31667 0 6.5C0 4.68333 0.629167 3.14583 1.8875 1.8875C3.14583 0.629167 4.68333 0 6.5 0C8.31667 0 9.85417 0.629167 11.1125 1.8875C12.3708 3.14583 13 4.68333 13 6.5C13 7.23333 12.8833 7.925 12.65 8.575C12.4167 9.225 12.1 9.8 11.7 10.3L18 16.6L16.6 18ZM6.5 11C7.75 11 8.8125 10.5625 9.6875 9.6875C10.5625 8.8125 11 7.75 11 6.5C11 5.25 10.5625 4.1875 9.6875 3.3125C8.8125 2.4375 7.75 2 6.5 2C5.25 2 4.1875 2.4375 3.3125 3.3125C2.4375 4.1875 2 5.25 2 6.5C2 7.75 2.4375 8.8125 3.3125 9.6875C4.1875 10.5625 5.25 11 6.5 11Z" fill="currentColor" />
+                        </svg>
+                    </button>
+                </div>
+            </form>
+
+            <a href="{{ url_for('index') }}" class="brand-link">
+                <img class="logo-makemana" src="/img/logo-makemana.png" alt="MakeMana Logo">
+            </a>
+
+            <div class="header-actions">
+                <button class="sos-switch" type="button" data-emergency-exit aria-label="Ativar dark mode">
+                    <span class="sos-track"><span class="sos-thumb"></span></span>
+                    <span class="dark-mode-text">Dark-Mode</span>
+                </button>
+
+                <a class="header-icon-link" href="{{ url_for('admin_login') }}" aria-label="Login admin" title="Admin">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M12 2.2 4 5.7v5.7c0 5 3.4 9.5 8 10.6 4.6-1.1 8-5.6 8-10.6V5.7l-8-3.5Zm0 2.2 6 2.6v4.4c0 3.8-2.4 7.3-6 8.4-3.6-1.1-6-4.6-6-8.4V7l6-2.6Zm0 3.1a2.4 2.4 0 1 0 0 4.8 2.4 2.4 0 0 0 0-4.8Zm-4.2 9.3h8.4c-.4-2-2-3.2-4.2-3.2s-3.8 1.2-4.2 3.2Z" fill="currentColor" />
+                    </svg>
+                </a>
+
+                <a class="header-icon-link" href="{{ url_for('perfil') if current_user else url_for('usuario_login') }}" aria-label="Login usuario" title="Perfil">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M12 12.2a5 5 0 1 0-5-5 5 5 0 0 0 5 5Zm0 2.1c-4.5 0-8 2.5-8 5.5V22h16v-2.2c0-3-3.5-5.5-8-5.5Z" fill="currentColor" />
+                    </svg>
+                </a>
+
+                <button class="cart-trigger" type="button" data-cart-open aria-label="Abrir carrinho">
+                    <svg viewBox="0 0 54 54" xmlns="http://www.w3.org/2000/svg" class="icon-cart">
+                        <path d="M16 53.33c-1.47 0-2.72-.52-3.77-1.57-1.04-1.04-1.56-2.3-1.56-3.76s.52-2.72 1.56-3.77c1.05-1.04 2.3-1.57 3.77-1.57s2.72.53 3.77 1.57c1.04 1.05 1.56 2.3 1.56 3.77s-.52 2.72-1.56 3.77c-1.05 1.05-2.3 1.57-3.77 1.57zm26.67 0c-1.47 0-2.72-.52-3.77-1.57-1.04-1.04-1.56-2.3-1.56-3.76s.52-2.72 1.56-3.77c1.05-1.04 2.3-1.57 3.77-1.57s2.72.53 3.77 1.57c1.04 1.05 1.56 2.3 1.56 3.77s-.52 2.72-1.56 3.77c-1.05 1.05-2.3 1.57-3.77 1.57zM13.73 10.67l6.4 13.33H38.8l7.33-13.33H13.73zM11.2 5.33h39.33c1.03 0 1.8.46 2.34 1.37.53.9.55 1.83.06 2.76l-9.46 17.07c-.49.89-1.15 1.58-1.97 2.07-.82.49-1.72.73-2.7.73H18.93l-2.93 5.34H48V40H16c-2 0-3.51-.88-4.53-2.63-1.02-1.76-1.07-3.5-.13-5.24l3.6-6.53L5.33 5.33H0V0h8.67l2.53 5.33z" fill="currentColor" />
+                    </svg>
+                    <span class="cart-count" data-cart-count>0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <nav class="main-nav">
+        <ul class="nav-list">
+            <li><a href="{{ url_for('produtos') }}" class="nav-link">TODOS OS SINAIS</a></li>
+            <li><a href="{{ url_for('kits') }}" class="nav-link">PLANOS DISCRETOS</a></li>
+            <li><a href="{{ url_for('skincare') }}" class="nav-link">CAMADAS CALMAS</a></li>
+            <li><a href="{{ url_for('maquiagem') }}" class="nav-link">LINHA DE SINAIS</a></li>
+            <li><a href="{{ url_for('institucional') }}" class="nav-link">INSTITUCIONAL</a></li>
+        </ul>
+    </nav>
+
+    {% block content %}{% endblock %}
+
+    <footer class="main-footer">
+        <div class="footer-grid">
+            <div class="footer-logo">
+                <img src="/img/IFB-logo.png" alt="Logo IFB">
+            </div>
+            <div class="footer-info">
+                <p class="copyright">&copy; 2026 - Make!Mana?<br>Projeto academico</p>
+                <p class="instituicao">Instituto Federal de Brasilia - IFB</p>
+            </div>
+            <div class="footer-spacer"></div>
+        </div>
+    </footer>
+
+    <div class="cart-backdrop" data-cart-close></div>
+    <aside class="cart-drawer" aria-label="Carrinho" aria-hidden="true">
+        <div class="cart-drawer__header">
+            <div>
+                <span>Carrinho</span>
+                <h2>Produtos selecionados</h2>
+            </div>
+            <button type="button" data-cart-close aria-label="Fechar carrinho">×</button>
+        </div>
+        <div class="cart-items" data-cart-items></div>
+        <div class="cart-empty" data-cart-empty>Seu carrinho esta vazio.</div>
+        <div class="cart-drawer__footer">
+            <div class="cart-total">
+                <span>Total estimado</span>
+                <strong data-cart-total>R$ 0,00</strong>
+            </div>
+            <a class="buy-button cart-checkout" href="{{ url_for('pedido') }}" data-cart-checkout>Finalizar pedido</a>
+        </div>
+    </aside>
+
+    <a class="return-chip" href="{{ url_for('index') }}" data-return-chip>Voltar para Make!Mana?</a>
+    <script src="/app.js"></script>
+    {% block scripts %}{% endblock %}
+</body>
+</html>

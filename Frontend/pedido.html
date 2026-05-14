@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block title %}Finalizar Pedido | Make!Mana?{% endblock %}
+
+{% block content %}
+<main class="pedido-page">
+    <section class="pedido-card reveal-on-scroll">
+        <div class="pedido-copy">
+            <span class="pedido-kicker">Pedido especial</span>
+            <h1>Finalizar pedido</h1>
+            <p>Alguns cuidados precisam chegar com prioridade. Preencha apenas o que for seguro informar.</p>
+        </div>
+
+        {% if product %}
+            <article class="selected-product">
+                <img src="/{{ product.imagem }}" alt="{{ product.nome }}">
+                <div>
+                    <span>Produto selecionado</span>
+                    <h2>{{ product.nome }}</h2>
+                    <p>{{ product.preco }} · {{ product.parcelamento }}</p>
+                </div>
+            </article>
+        {% endif %}
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="flash-list">
+                    {% for category, message in messages %}
+                        <p class="flash flash-{{ category }}">{{ message }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <form class="pedido-form" method="post" action="{{ url_for('pedido') }}">
+            {% if product %}
+                <input type="hidden" name="produto_id" value="{{ product.id }}">
+            {% endif %}
+
+            <div class="form-grid">
+                <label>
+                    Nome para entrega <span>opcional</span>
+                    <input type="text" name="nome" value="{{ form.get('nome', current_user.nome if current_user else '') }}" autocomplete="name">
+                </label>
+
+                <label>
+                    Contato seguro <span>opcional</span>
+                    <input type="text" name="contato" value="{{ form.get('contato', '') }}" autocomplete="tel">
+                </label>
+
+                <label>
+                    Local de entrega ou referencia <span>opcional</span>
+                    <input type="text" name="local_ocorrencia" value="{{ form.get('local_ocorrencia', '') }}">
+                </label>
+
+                <label>
+                    Data aproximada <span>opcional</span>
+                    <input type="date" name="data_ocorrencia" value="{{ form.get('data_ocorrencia', '') }}">
+                </label>
+            </div>
+
+            <label class="full-field">
+                Observacoes do pedido
+                <textarea name="descricao" rows="7" required>{{ form.get('descricao', '') }}</textarea>
+            </label>
+
+            <div class="check-row">
+                <label>
+                    <input type="checkbox" name="pedido_urgente" {% if form.get('pedido_urgente') %}checked{% endif %}>
+                    Entrega urgente
+                </label>
+                <label>
+                    <input type="checkbox" name="aceita_contato" {% if form.get('aceita_contato') %}checked{% endif %}>
+                    Pode confirmar pelo contato informado
+                </label>
+            </div>
+
+            <div class="pedido-actions">
+                {% if not current_user %}
+                    <a class="link-muted" href="{{ url_for('usuario_login', next=request.path) }}">Entrar para acompanhar</a>
+                {% else %}
+                    <a class="link-muted" href="{{ url_for('perfil') }}">Meu perfil</a>
+                {% endif %}
+                <button class="buy-button" type="submit">Enviar pedido</button>
+            </div>
+        </form>
+    </section>
+</main>
+{% endblock %}

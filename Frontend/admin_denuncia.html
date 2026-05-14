@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ denuncia.protocolo }} | Admin Make!Mana?</title>
+    <link rel="shortcut icon" href="/img/logo-favicon-makemana.png" type="image/x-icon">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/backend.css">
+    <link rel="stylesheet" href="/variables.css">
+</head>
+
+<body class="admin-body">
+    <header class="admin-topbar">
+        <div>
+            <span>{{ denuncia.protocolo }}</span>
+            <h1>Detalhes do pedido</h1>
+        </div>
+        <nav>
+            <a href="{{ url_for('admin_dashboard') }}">Voltar</a>
+            <a href="{{ url_for('admin_logout') }}">Sair</a>
+        </nav>
+    </header>
+
+    <main class="admin-shell admin-detail-shell">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="flash-list">
+                    {% for category, message in messages %}
+                        <p class="flash flash-{{ category }}">{{ message }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <section class="admin-detail-grid">
+            <article class="admin-panel detail-panel">
+                <h2>Registro recebido</h2>
+                <dl class="detail-list">
+                    <div>
+                        <dt>Produto</dt>
+                        <dd>{{ denuncia.produto_nome or 'Pedido especial' }}</dd>
+                    </div>
+                    <div>
+                        <dt>Valor</dt>
+                        <dd>{{ denuncia.produto_preco or 'Nao informado' }}</dd>
+                    </div>
+                    <div>
+                        <dt>Perfil</dt>
+                        <dd>{{ denuncia.usuario.nome if denuncia.usuario else 'Sem login vinculado' }}</dd>
+                    </div>
+                    <div>
+                        <dt>Status</dt>
+                        <dd><span class="status-pill status-{{ denuncia.status }}">{{ status_choices[denuncia.status] }}</span></dd>
+                    </div>
+                    <div>
+                        <dt>Urgencia</dt>
+                        <dd>{% if denuncia.pedido_urgente %}<span class="urgent-pill">Urgente</span>{% else %}Normal{% endif %}</dd>
+                    </div>
+                    <div>
+                        <dt>Recebida em</dt>
+                        <dd>{{ denuncia.created_at.strftime('%d/%m/%Y %H:%M') }}</dd>
+                    </div>
+                    <div>
+                        <dt>Nome</dt>
+                        <dd>{{ denuncia.nome or 'Nao informado' }}</dd>
+                    </div>
+                    <div>
+                        <dt>Contato</dt>
+                        <dd>{{ denuncia.contato or 'Nao informado' }}</dd>
+                    </div>
+                    <div>
+                        <dt>Contato autorizado</dt>
+                        <dd>{{ 'Sim' if denuncia.aceita_contato else 'Nao' }}</dd>
+                    </div>
+                    <div>
+                        <dt>Local</dt>
+                        <dd>{{ denuncia.local_ocorrencia or 'Nao informado' }}</dd>
+                    </div>
+                    <div>
+                        <dt>Data aproximada</dt>
+                        <dd>{{ denuncia.data_ocorrencia.strftime('%d/%m/%Y') if denuncia.data_ocorrencia else 'Nao informada' }}</dd>
+                    </div>
+                </dl>
+                <div class="description-box">
+                    <h3>Descricao</h3>
+                    <p>{{ denuncia.descricao }}</p>
+                </div>
+            </article>
+
+            <form class="admin-panel detail-panel" method="post" action="{{ url_for('admin_denuncia_detail', denuncia_id=denuncia.id) }}">
+                <h2>Triagem</h2>
+                <label>
+                    Status
+                    <select name="status">
+                        {% for status, label in status_choices.items() %}
+                            <option value="{{ status }}" {% if denuncia.status == status %}selected{% endif %}>{{ label }}</option>
+                        {% endfor %}
+                    </select>
+                </label>
+                <label>
+                    Observacoes administrativas
+                    <textarea name="observacoes_admin" rows="10">{{ denuncia.observacoes_admin or '' }}</textarea>
+                </label>
+                <button class="admin-primary" type="submit">Salvar alteracoes</button>
+            </form>
+        </section>
+    </main>
+</body>
+</html>
