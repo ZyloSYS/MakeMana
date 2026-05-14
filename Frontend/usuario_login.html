@@ -8,7 +8,7 @@
         <img class="confirmacao-logo" src="/img/logo-makemana.png" alt="MakeMana Logo">
         <span class="pedido-kicker">Acesso da cliente</span>
         <h1>Entrar ou criar acesso</h1>
-        <p>Cadastre seu nome uma vez e guarde o codigo gerado para acompanhar seus pedidos.</p>
+        <p>Cadastre um nome de usuario e uma senha de 6 digitos. Guarde o codigo gerado para entrar depois.</p>
 
         {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
@@ -27,7 +27,11 @@
             </label>
             <label>
                 Nome para cadastro
-                <input type="text" name="nome" autocomplete="name">
+                <input type="text" name="nome" autocomplete="username">
+            </label>
+            <label>
+                Senha para cadastro
+                <input type="password" name="senha" autocomplete="new-password" inputmode="numeric" pattern="[0-9]{6}" minlength="6" maxlength="6" placeholder="6 digitos">
             </label>
             <div class="pedido-actions">
                 <button class="admin-primary" type="submit" name="action" value="login">Entrar</button>

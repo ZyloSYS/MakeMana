@@ -69,9 +69,16 @@ def test_formulario_pedido_cria_registro(client, app):
 
 
 def test_usuario_cadastra_envia_e_acompanha_pedido(client, app):
+    senha_curta = client.post(
+        "/login",
+        data={"nome": "Maria", "senha": "1234", "action": "register"},
+        follow_redirects=False,
+    )
+    assert senha_curta.status_code == 400
+
     response = client.post(
         "/login",
-        data={"nome": "Maria", "action": "register"},
+        data={"nome": "Maria", "senha": "123456", "action": "register"},
         follow_redirects=False,
     )
     assert response.status_code == 302

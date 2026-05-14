@@ -217,11 +217,15 @@ def register_routes(app: Flask) -> None:
         if request.method == "POST":
             nome = request.form.get("nome", "").strip()
             codigo = request.form.get("codigo", "").strip()
+            senha = request.form.get("senha", "")
             action = request.form.get("action", "login")
 
             if action == "register":
                 if not nome:
-                    flash("Informe seu nome para criar o acesso.", "error")
+                    flash("Informe seu nome de usuario para criar o acesso.", "error")
+                    return render_template("usuario_login.html"), 400
+                if not _valid_user_password(senha):
+                    flash("A senha do cadastro deve ter exatamente 6 digitos numericos.", "error")
                     return render_template("usuario_login.html"), 400
                 usuario = Usuario.query.filter(func.lower(Usuario.nome) == nome.lower()).first()
                 if usuario:
@@ -229,7 +233,7 @@ def register_routes(app: Flask) -> None:
                     return render_template("usuario_login.html"), 400
                 codigo_acesso = _new_user_token()
                 usuario = Usuario(nome=nome, codigo_acesso=codigo_acesso)
-                usuario.set_password(codigo_acesso)
+                usuario.set_password(senha)
                 db.session.add(usuario)
                 db.session.commit()
                 session.clear()
@@ -517,6 +521,10 @@ def _new_user_token() -> str:
         code = f"MMU-{secrets.token_hex(4).upper()}"
         if not Usuario.query.filter_by(codigo_acesso=code).first():
             return code
+
+
+def _valid_user_password(password: str) -> bool:
+    return len(password) == 6 and password.isdigit()
 
 
 def _valid_admin_credentials(username: str, password: str) -> bool:
