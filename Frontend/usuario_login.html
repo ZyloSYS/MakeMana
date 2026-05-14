@@ -8,7 +8,7 @@
         <img class="confirmacao-logo" src="/img/logo-makemana.png" alt="MakeMana Logo">
         <span class="pedido-kicker">Acesso da cliente</span>
         <h1>Entrar ou criar acesso</h1>
-        <p>Cadastre um nome de usuario e uma senha de 6 digitos. Guarde o codigo gerado para entrar depois.</p>
+        <p>Use o codigo de acesso para entrar. Para criar um acesso, informe apenas nome de usuario e senha.</p>
 
         {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
@@ -23,18 +23,23 @@
         <form class="pedido-form auth-form" method="post">
             <label>
                 Codigo de acesso
-                <input type="text" name="codigo" autocomplete="one-time-code" placeholder="MMU-XXXXXXXX">
-            </label>
-            <label>
-                Nome para cadastro
-                <input type="text" name="nome" autocomplete="username">
-            </label>
-            <label>
-                Senha para cadastro
-                <input type="password" name="senha" autocomplete="new-password" inputmode="numeric" pattern="[0-9]{6}" minlength="6" maxlength="6" placeholder="6 digitos">
+                <input type="text" name="codigo" autocomplete="one-time-code" placeholder="MMU-XXXXXXXX" required>
             </label>
             <div class="pedido-actions">
                 <button class="admin-primary" type="submit" name="action" value="login">Entrar</button>
+            </div>
+        </form>
+
+        <form class="pedido-form auth-form" method="post">
+            <label>
+                Nome para cadastro
+                <input type="text" name="nome" autocomplete="username" required>
+            </label>
+            <label>
+                Senha para cadastro
+                <input type="password" name="senha" autocomplete="new-password" inputmode="numeric" pattern="[0-9]{6}" minlength="6" maxlength="6" placeholder="6 digitos" required>
+            </label>
+            <div class="pedido-actions">
                 <button class="buy-button" type="submit" name="action" value="register">Criar acesso</button>
             </div>
         </form>
